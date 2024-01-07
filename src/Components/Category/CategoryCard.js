@@ -1,13 +1,26 @@
-export const CategoryCard = ({ category, onSelectCategory }) => {
+export const CategoryCard = ({
+  category,
+  onSelectCategory,
+  selectedCategory,
+}) => {
   return (
     <>
       <div
-        className="w-1/5 cursor-pointer hover:scale-105 duration-300 "
+        className={
+          selectedCategory === category
+            ? "w-1/5 cursor-pointer  scale-105 duration-300 rounded-xl"
+            : "w-1/5 cursor-pointer hover:scale-105 duration-300"
+        }
         id="categories"
         onClick={() => onSelectCategory(category)}
       >
         <div className="flex flex-col h-full p-2 ">
-          <div className="flex h-full justify-center">
+          <div className="flex relative h-full w-full justify-center">
+            {selectedCategory === category && (
+              <span className="absolute top-52 text-3xl font-bold">
+                {category}
+              </span>
+            )}
             <img
               src={
                 category === "Necklace"
@@ -19,7 +32,11 @@ export const CategoryCard = ({ category, onSelectCategory }) => {
                   : "https://images.unsplash.com/photo-1597006354775-2955b15ec026?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               }
               alt={category}
-              className="rounded-xl object-cover"
+              className={
+                selectedCategory === category
+                  ? "rounded-xl object-cover opacity-60"
+                  : "rounded-xl object-cover"
+              }
             ></img>
           </div>
           <div className="flex flex-col justify-center items-center p-2 text-xl">

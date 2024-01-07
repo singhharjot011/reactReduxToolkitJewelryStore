@@ -4,7 +4,8 @@ export default function Products({
   allProducts,
   selectedCategory,
   onLikeProduct,
-  likedProducts,
+  likedProductsCodes,
+  onSelectProduct,
 }) {
   const filteredProducts = allProducts.filter((product) => {
     if (!selectedCategory) return product;
@@ -20,7 +21,8 @@ export default function Products({
             product={product}
             key={product.productCode}
             onLikeProduct={onLikeProduct}
-            likedProducts={likedProducts}
+            likedProductsCodes={likedProductsCodes}
+            onSelectProduct={onSelectProduct}
           />
         ))}
       </section>

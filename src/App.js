@@ -15,7 +15,9 @@ import Cart from "./Components/Cart/Cart";
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [allProducts, setAllProducts] = useState(Data);
-  const [likedProducts, setLikedProducts] = useState([]);
+  const [likedProductsCodes, setLikedProductsCodes] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [cartProductsCodes, setCartProductsCodes] = useState([]);
 
   const allCategories = Array.from(
     new Set(allProducts.map((product) => product.category))
@@ -25,43 +27,89 @@ function App() {
     setSelectedCategory(selectedCategory === category ? null : category);
   }
 
-  function handleLikedProducts(likedProductCode) {
-    // console.log(likedProducts.includes(likedProductCode));
-    if (likedProducts.includes(likedProductCode)) {
-      setLikedProducts(
-        likedProducts.filter((productCode) => productCode !== likedProductCode)
+  function handleSelectedProduct(product) {
+    setSelectedProduct((selectedProduct) => (selectedProduct = product));
+  }
+
+  function handleCartProductsCodes(cartProductCode) {
+    if (cartProductsCodes.includes(cartProductCode)) {
+      setCartProductsCodes(
+        cartProductsCodes.filter(
+          (productCode) => productCode !== cartProductCode
+        )
       );
     } else
-      setLikedProducts((likedProducts) =>
-        Array.from(new Set([...likedProducts, likedProductCode]))
+      setCartProductsCodes((cartProductsCodes) =>
+        Array.from(new Set([...cartProductsCodes, cartProductCode]))
+      );
+  }
+
+  function handleLikedProductsCodes(likedProductCode) {
+    if (likedProductsCodes.includes(likedProductCode)) {
+      setLikedProductsCodes(
+        likedProductsCodes.filter(
+          (productCode) => productCode !== likedProductCode
+        )
+      );
+    } else
+      setLikedProductsCodes((likedProductsCodes) =>
+        Array.from(new Set([...likedProductsCodes, likedProductCode]))
       );
   }
 
   return (
     <>
-      <Header />
+      <Header
+        likedProductsCodes={likedProductsCodes}
+        cartProductsCodes={cartProductsCodes}
+      />
       <Navbar />
       <Tagline1 />
       <Category
         allCategories={allCategories}
         onSelectCategory={handleSelectedCategory}
+        selectedCategory={selectedCategory}
       />
       <Products
         allProducts={allProducts}
         selectedCategory={selectedCategory}
-        onLikeProduct={handleLikedProducts}
-        likedProducts={likedProducts}
+        onLikeProduct={handleLikedProductsCodes}
+        likedProductsCodes={likedProductsCodes}
+        onSelectProduct={handleSelectedProduct}
+        onModifyCartProduct={handleCartProductsCodes}
       />
       <Wishlist
-        likedProducts={likedProducts}
+        likedProductsCodes={likedProductsCodes}
         allProducts={allProducts}
-        onLikeProduct={handleLikedProducts}
+        onLikeProduct={handleLikedProductsCodes}
       />
 
-      <ProductView />
-      <Featured />
-      <BestSellers />
-      <Cart></Cart>
+      {selectedProduct && (
+        <ProductView
+          selectedProduct={selectedProduct}
+          onModifyCartProduct={handleCartProductsCodes}
+          cartProductsCodes={cartProductsCodes}
+        />
+      )}
+      <Featured
+        allProducts={allProducts}
+        selectedCategory={selectedCategory}
+        onLikeProduct={handleLikedProductsCodes}
+        likedProductsCodes={likedProductsCodes}
+        onSelectProduct={handleSelectedProduct}
+      />
+      <BestSellers
+        allProducts={allProducts}
+        selectedCategory={selectedCategory}
+        onLikeProduct={handleLikedProductsCodes}
+        likedProductsCodes={likedProductsCodes}
+        onSelectProduct={handleSelectedProduct}
+      />
+      <Cart
+        cartProductsCodes={cartProductsCodes}
+        allProducts={allProducts}
+        onModifyCartProduct={handleCartProductsCodes}
+      ></Cart>
     </>
   );
 }

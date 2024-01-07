@@ -1,7 +1,12 @@
 import { AiFillStar, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useState } from "react";
 
-export default function Card({ product, onLikeProduct, likedProducts }) {
+export default function Card({
+  product,
+  onLikeProduct,
+  likedProductsCodes,
+  onSelectProduct,
+}) {
   const soldOutClass = "bg-white text-black text-sm p-1 absolute top-0 right-0";
   const saleClass = "bg-black text-white text-sm p-1 absolute top-0 right-0";
   const ratingStars = product?.rating
@@ -19,13 +24,17 @@ export default function Card({ product, onLikeProduct, likedProducts }) {
             active:bg-biege/60"
             onClick={(e) => onLikeProduct(product.productCode)}
           >
-            {likedProducts?.includes(product.productCode) ? (
+            {likedProductsCodes?.includes(product.productCode) ? (
               <AiFillHeart />
             ) : (
               <AiOutlineHeart />
             )}
           </span>
-          <img src={product?.img} className="h-full"></img>
+          <img
+            src={product?.img}
+            className="h-full"
+            onClick={(e) => onSelectProduct(product)}
+          ></img>
           <span className="bg-black text-white  p-2 absolute bottom-10  w-3/4 text-center opacity-0 group-hover:opacity-100 duration-500">
             Quick View
           </span>
