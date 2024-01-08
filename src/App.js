@@ -6,6 +6,7 @@ import Category from "./Components/Category/Category";
 import Featured from "./Components/Products/Featured";
 import Data from "./Database/Data";
 import Products from "./Components/Products/Products";
+import Card from "./Components/Products/Card";
 import BestSellers from "./Components/Products/BestSellers";
 import ProductView from "./Components/Products/ProductView";
 import { useState } from "react";
@@ -22,6 +23,17 @@ function App() {
   const allCategories = Array.from(
     new Set(allProducts.map((product) => product.category))
   );
+
+  const filteredProducts = allProducts.filter((product) => {
+    if (!selectedCategory) return product;
+    return product.category === selectedCategory;
+  });
+
+  const filterFeaturedProducts = allProducts.filter(
+    (product) => product.featured
+  );
+
+  const filterBestSellers = allProducts.filter((product) => product.bestSeller);
 
   function handleSelectedCategory(category) {
     setSelectedCategory(selectedCategory === category ? null : category);
@@ -70,14 +82,15 @@ function App() {
         onSelectCategory={handleSelectedCategory}
         selectedCategory={selectedCategory}
       />
-      <Products
-        allProducts={allProducts}
-        selectedCategory={selectedCategory}
-        onLikeProduct={handleLikedProductsCodes}
-        likedProductsCodes={likedProductsCodes}
-        onSelectProduct={handleSelectedProduct}
-        onModifyCartProduct={handleCartProductsCodes}
-      />
+      <Products>
+        <Card
+          allProducts={allProducts}
+          filteredProducts={filteredProducts}
+          onLikeProduct={handleLikedProductsCodes}
+          likedProductsCodes={likedProductsCodes}
+          onSelectProduct={handleSelectedProduct}
+        />
+      </Products>
       <Wishlist
         likedProductsCodes={likedProductsCodes}
         allProducts={allProducts}
@@ -91,20 +104,26 @@ function App() {
           cartProductsCodes={cartProductsCodes}
         />
       )}
-      <Featured
-        allProducts={allProducts}
-        selectedCategory={selectedCategory}
-        onLikeProduct={handleLikedProductsCodes}
-        likedProductsCodes={likedProductsCodes}
-        onSelectProduct={handleSelectedProduct}
-      />
-      <BestSellers
-        allProducts={allProducts}
-        selectedCategory={selectedCategory}
-        onLikeProduct={handleLikedProductsCodes}
-        likedProductsCodes={likedProductsCodes}
-        onSelectProduct={handleSelectedProduct}
-      />
+      <Featured>
+        <Card
+          filteredProducts={filterFeaturedProducts}
+          allProducts={allProducts}
+          selectedCategory={selectedCategory}
+          onLikeProduct={handleLikedProductsCodes}
+          likedProductsCodes={likedProductsCodes}
+          onSelectProduct={handleSelectedProduct}
+        />
+      </Featured>
+      <BestSellers>
+        <Card
+          filteredProducts={filterBestSellers}
+          allProducts={allProducts}
+          selectedCategory={selectedCategory}
+          onLikeProduct={handleLikedProductsCodes}
+          likedProductsCodes={likedProductsCodes}
+          onSelectProduct={handleSelectedProduct}
+        />
+      </BestSellers>
       <Cart
         cartProductsCodes={cartProductsCodes}
         allProducts={allProducts}

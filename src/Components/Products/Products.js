@@ -1,30 +1,11 @@
-import Card from "./Card";
 
-export default function Products({
-  allProducts,
-  selectedCategory,
-  onLikeProduct,
-  likedProductsCodes,
-  onSelectProduct,
-}) {
-  const filteredProducts = allProducts.filter((product) => {
-    if (!selectedCategory) return product;
-    return product.category === selectedCategory;
-  });
 
+export default function Products({ children }) {
   return (
     <>
       <section id="products" className="flex flex-wrap justify-evenly p-5">
         <div className="w-full text-center text-4xl my-5"> Products</div>
-        {filteredProducts.map((product) => (
-          <Card
-            product={product}
-            key={product.productCode}
-            onLikeProduct={onLikeProduct}
-            likedProductsCodes={likedProductsCodes}
-            onSelectProduct={onSelectProduct}
-          />
-        ))}
+        {children}
       </section>
     </>
   );
