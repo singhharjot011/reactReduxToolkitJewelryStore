@@ -6,7 +6,7 @@ import Category from "./Components/Category/Category";
 import Featured from "./Components/Products/Featured";
 import Data from "./Database/Data";
 import Products from "./Components/Products/Products";
-import Card from "./Components/Products/Card";
+import Cards from "./Components/Cards/Cards";
 import BestSellers from "./Components/Products/BestSellers";
 import ProductView from "./Components/Products/ProductView";
 import { useState } from "react";
@@ -83,8 +83,7 @@ function App() {
         selectedCategory={selectedCategory}
       />
       <Products>
-        <Card
-          allProducts={allProducts}
+        <Cards
           filteredProducts={filteredProducts}
           onLikeProduct={handleLikedProductsCodes}
           likedProductsCodes={likedProductsCodes}
@@ -105,9 +104,8 @@ function App() {
         />
       )}
       <Featured>
-        <Card
+        <Cards
           filteredProducts={filterFeaturedProducts}
-          allProducts={allProducts}
           selectedCategory={selectedCategory}
           onLikeProduct={handleLikedProductsCodes}
           likedProductsCodes={likedProductsCodes}
@@ -115,9 +113,8 @@ function App() {
         />
       </Featured>
       <BestSellers>
-        <Card
+        <Cards
           filteredProducts={filterBestSellers}
-          allProducts={allProducts}
           selectedCategory={selectedCategory}
           onLikeProduct={handleLikedProductsCodes}
           likedProductsCodes={likedProductsCodes}

@@ -1,5 +1,3 @@
-import "./Tagline1.css";
-
 const Tagline1 = () => {
   return (
     <section id="tagline" className="p-10 bg-biege">

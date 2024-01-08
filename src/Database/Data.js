@@ -3,7 +3,7 @@ const Data = [
     productCode: "roo1",
     img: "https://images.pexels.com/photos/1721937/pexels-photo-1721937.jpeg?auto=compress&cs=tinysrgb&w=600",
     productName: "Meena Kumari Necklace",
-    statusTag: "Sale",
+    statusTag: "Sold",
     rating: 3.4,
     prevPrice: "$140",
     newPrice: "$90",

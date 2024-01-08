@@ -11,7 +11,7 @@ export default function Header({ likedProductsCodes, cartProductsCodes }) {
     <>
       <section
         id="header"
-        className=" duration-500 h-96 text-biege hover:text-black  hover:bg-gradient-to-b hover:from-biege hover:to-biege bg-[url('https://media2.giphy.com/media/l1ugjyRUjdqb73rLW/giphy.gif?cid=ecf05e47hmwftg5rz3yuuhqdvpuhnafs7xyk7vi3ogiahv9m&ep=v1_gifs_search&rid=giphy.gif&ct=g')] bg-cover"
+        className="header-class duration-500 h-96 text-biege hover:text-black  hover:bg-gradient-to-b hover:from-biege hover:to-biege bg-[url('https://media2.giphy.com/media/l1ugjyRUjdqb73rLW/giphy.gif?cid=ecf05e47hmwftg5rz3yuuhqdvpuhnafs7xyk7vi3ogiahv9m&ep=v1_gifs_search&rid=giphy.gif&ct=g')] bg-cover"
       >
         <div className="flex flex-col justify-center space-y-4">
           <div className="w-full flex justify-between p-2">
