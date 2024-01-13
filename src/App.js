@@ -9,16 +9,22 @@ import Products from "./Components/Products/Products";
 import Cards from "./Components/Cards/Cards";
 import BestSellers from "./Components/Products/BestSellers";
 import ProductView from "./Components/Products/ProductView";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Wishlist from "./Components/Wishlist/Wishlist";
 import Cart from "./Components/Cart/Cart";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [allProducts, setAllProducts] = useState(Data);
-  const [likedProductsCodes, setLikedProductsCodes] = useState([]);
+  const [likedProductsCodes, setLikedProductsCodes] = useState(() => {
+    const likedCodes = localStorage.getItem("likedProductsCodes");
+    return JSON.parse(likedCodes);
+  });
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [cartProductsCodes, setCartProductsCodes] = useState([]);
+  const [cartProductsCodes, setCartProductsCodes] = useState(() => {
+    const cartCodes = localStorage.getItem("cartProductsCodes");
+    return JSON.parse(cartCodes);
+  });
 
   const allCategories = Array.from(
     new Set(allProducts.map((product) => product.category))
@@ -68,6 +74,26 @@ function App() {
         Array.from(new Set([...likedProductsCodes, likedProductCode]))
       );
   }
+
+  useEffect(
+    function () {
+      localStorage.setItem(
+        "likedProductsCodes",
+        JSON.stringify(likedProductsCodes)
+      );
+    },
+    [likedProductsCodes]
+  );
+
+  useEffect(
+    function () {
+      localStorage.setItem(
+        "cartProductsCodes",
+        JSON.stringify(cartProductsCodes)
+      );
+    },
+    [cartProductsCodes]
+  );
 
   return (
     <>

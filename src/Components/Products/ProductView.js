@@ -54,18 +54,18 @@ export default function ProductView({
             <img src="" className="object-cover h-10 w-10 "></img>
           </div>
           <hr />
-          <div className="w-full">
+          <div className="w-full flex justify-center items-center">
             <button
               id="add-to-cart-btn"
-              className="bg-black text-biege w-full border-black border hover:bg-biege hover:text-black active:bg-white"
+              className="bg-black text-biege w-2/3 mt-3  rounded border-black border hover:bg-biege hover:text-black active:bg-white"
               onClick={() => onModifyCartProduct(selectedProduct.productCode)}
             >
               {cartProductsCodes.includes(selectedProduct.productCode)
-                ? "Delete From Cart"
+                ? "Added To Cart"
                 : "Add To Cart"}
             </button>
           </div>
-          <div className="flex items-center gap-x-2 mt-5">
+          <div className="flex justify-center items-center gap-x-2 mt-5">
             <MdOutlineLocalShipping />
             <p className="text-black/60 text-sm">
               Free standard shipping over $120.00
