@@ -18,12 +18,12 @@ function App() {
   const [allProducts, setAllProducts] = useState(Data);
   const [likedProductsCodes, setLikedProductsCodes] = useState(() => {
     const likedCodes = localStorage.getItem("likedProductsCodes");
-    return JSON.parse(likedCodes);
+    return likedCodes ? JSON.parse(likedCodes) : [];
   });
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [cartProductsCodes, setCartProductsCodes] = useState(() => {
     const cartCodes = localStorage.getItem("cartProductsCodes");
-    return JSON.parse(cartCodes);
+    return cartCodes ? JSON.parse(cartCodes) : [];
   });
 
   const allCategories = Array.from(
