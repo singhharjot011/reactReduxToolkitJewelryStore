@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 import {
   BsGlobe,
   BsFillPersonFill,
@@ -7,13 +9,36 @@ import {
 } from "react-icons/bs";
 
 export default function Header({ likedProductsCodes, cartProductsCodes }) {
+  const heroElement = useRef(null);
+  const headerElement = useRef(null);
+
+  useEffect(function () {
+    const headerClassName = headerElement.current.className;
+
+    document.addEventListener("scroll", callback);
+
+    function callback() {
+      if (Math.floor(window.scrollY) >= 5) {
+        headerElement.current.className = "hidden";
+        window.removeEventListener("scroll", callback);
+      } else {
+        headerElement.current.className = headerClassName;
+        window.removeEventListener("scroll", callback);
+      }
+      window.removeEventListener("scroll", callback);
+    }
+  }, []);
   return (
     <>
       <section
         id="header"
-        className="header-class duration-500 h-96 text-biege hover:text-black  hover:bg-gradient-to-b hover:from-biege hover:to-biege bg-[url('https://media2.giphy.com/media/l1ugjyRUjdqb73rLW/giphy.gif?cid=ecf05e47hmwftg5rz3yuuhqdvpuhnafs7xyk7vi3ogiahv9m&ep=v1_gifs_search&rid=giphy.gif&ct=g')] bg-cover"
+        className="header-class duration-500 h-[605px] text-biege   bg-[url('https://media1.giphy.com/media/l1ug4EI8ksrPC9YLS/giphy.gif?cid=ecf05e477yk2eblf18lvggh2a0pej11yglr91cu8ibrzd14p&ep=v1_gifs_search&rid=giphy.gif&ct=g')] bg-cover text-sm"
+        ref={heroElement}
       >
-        <div className="flex flex-col justify-center space-y-4">
+        <div
+          className="flex flex-col justify-center space-y-4 h-max hover:text-black hover:bg-gradient-to-b hover:from-biege hover:to-biege duration-500 "
+          ref={headerElement}
+        >
           <div className="w-full flex justify-between p-2">
             <a href="#" className="flex items-center gap-2">
               <BsGlobe />

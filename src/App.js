@@ -101,7 +101,7 @@ function App() {
         likedProductsCodes={likedProductsCodes}
         cartProductsCodes={cartProductsCodes}
       />
-      <Navbar />
+      <Navbar cartProductsCodes={cartProductsCodes} />
       <Tagline1 />
       <Category
         allCategories={allCategories}
