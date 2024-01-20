@@ -6,7 +6,7 @@ export default function Category({
   selectedCategory,
 }) {
   return (
-    <section id="category" className="flex flex-wrap justify-evenly">
+    <section id="category" className="flex flex-wrap justify-evenly p-10">
       <div className="w-full text-center text-4xl my-5"> Shop By Category</div>
       {allCategories.map((cat) => (
         <CategoryCard

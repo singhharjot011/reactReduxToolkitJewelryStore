@@ -1,8 +1,17 @@
+import Tagline2 from "../Taglines/Tagline2";
+
 export default function Featured({ children }) {
   return (
-    <section id="featured" className="flex flex-wrap justify-evenly p-5">
-      <div className="w-full text-center text-4xl my-5"> Featured</div>
-      {children}
-    </section>
+    <>
+      <Tagline2 />
+      <section id="featured" className=" p-10 bg-biege my-10">
+        <div className="w-full text-center text-4xl my-5 textfont">
+          {" "}
+          Featured
+        </div>
+
+        {children}
+      </section>
+    </>
   );
 }

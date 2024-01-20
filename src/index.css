@@ -8,8 +8,13 @@ body {
 
 * {
   @apply selection:bg-pink-600 selection:text-gray-300;
+  font-family: "Kanit", sans-serif;
 }
 
 .active {
   font-weight: bold;
+}
+
+.textfont {
+  font-family: "Kanit", sans-serif;
 }

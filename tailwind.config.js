@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         biege: "#f0eee5",
+        babyPink: "#FAC2CC",
       },
     },
   },

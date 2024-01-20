@@ -8,7 +8,9 @@ const Navbar = ({ cartProductsCodes }) => {
 
   // Still need to fix as this code is not good for perfomrance
   useEffect(function () {
-    const navbarClassName = navbarElement.current.className;
+    const navbarClassName = navbarElement?.current.className;
+
+    if (!navbarClassName) return;
 
     document.addEventListener("scroll", callback);
 
@@ -35,6 +37,7 @@ const Navbar = ({ cartProductsCodes }) => {
           <Link to="/" className="text-black items-center flex">
             <img
               className="me-2"
+              alt=""
               src="https://pngimg.com/d/jewelry_PNG6770.png"
               style={{ height: "30px" }}
             ></img>

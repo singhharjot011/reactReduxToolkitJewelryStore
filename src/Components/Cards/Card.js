@@ -12,8 +12,8 @@ export default function Card({
   onSelectProduct,
 }) {
   return (
-    <Link to="/products">
-      <div className="flex flex-col p-2  w-60 h-[350px] cursor-pointer shadow-lg shadow-biege  rounded-xl">
+    <Link to="products" className="mt-10 ">
+      <div className="flex flex-col p-2  w-60 h-[350px] cursor-pointer rounded-xl bg-white">
         <div className="w-full h-4/5 group flex flex-col items-center justify-center relative ">
           <span
             className={`${
@@ -43,6 +43,7 @@ export default function Card({
           </span>
           <img
             src={product?.img}
+            alt={product?.productName}
             className="h-full w-full object-cover  rounded-xl"
             onClick={(e) => onSelectProduct(product)}
           ></img>
@@ -51,7 +52,7 @@ export default function Card({
           </span>
         </div>
         <div className="self-center p-2 h-1/5  flex flex-col text-center">
-          <span>{product?.productName}</span>
+          <strong>{product?.productName}</strong>
           <span className="text-sm">
             <del>{product?.statusTag === "Sale" && product?.prevPrice}</del>{" "}
             {product?.newPrice}

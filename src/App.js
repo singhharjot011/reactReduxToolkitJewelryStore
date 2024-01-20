@@ -1,5 +1,5 @@
 import "./App.css";
-import Header from "./Components/Headers/Header";
+import HeroHeader from "./Components/Headers/HeroHeader";
 import Navbar from "./Components/Navbar/Navbar";
 import Tagline1 from "./Components/Taglines/Tagline1";
 import Category from "./Components/Category/Category";
@@ -14,6 +14,8 @@ import Wishlist from "./Components/Wishlist/Wishlist";
 import Cart from "./Components/Cart/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppLayout from "./Pages/AppLayout";
+import CommonHeader from "./Components/Headers/CommonHeader";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -105,7 +107,7 @@ function App() {
             path="/"
             element={
               <AppLayout>
-                <Header
+                <HeroHeader
                   likedProductsCodes={likedProductsCodes}
                   cartProductsCodes={cartProductsCodes}
                 />
@@ -116,10 +118,38 @@ function App() {
                   onSelectCategory={handleSelectedCategory}
                   selectedCategory={selectedCategory}
                 />
+                {selectedCategory && (
+                  <Products selectedCategory={selectedCategory}>
+                    <Cards
+                      filteredProducts={filteredProducts}
+                      onLikeProduct={handleLikedProductsCodes}
+                      likedProductsCodes={likedProductsCodes}
+                      onSelectProduct={handleSelectedProduct}
+                    />
+                  </Products>
+                )}
+                <Featured>
+                  <Cards
+                    filteredProducts={filterFeaturedProducts}
+                    selectedCategory={selectedCategory}
+                    onLikeProduct={handleLikedProductsCodes}
+                    likedProductsCodes={likedProductsCodes}
+                    onSelectProduct={handleSelectedProduct}
+                  />
+                </Featured>
+                <BestSellers>
+                  <Cards
+                    filteredProducts={filterBestSellers}
+                    selectedCategory={selectedCategory}
+                    onLikeProduct={handleLikedProductsCodes}
+                    likedProductsCodes={likedProductsCodes}
+                    onSelectProduct={handleSelectedProduct}
+                  />
+                </BestSellers>
               </AppLayout>
             }
           >
-            <Route
+            {/* <Route
               path="products"
               element={
                 <Products selectedCategory={selectedCategory}>
@@ -131,32 +161,69 @@ function App() {
                   />
                 </Products>
               }
-            ></Route>
+            /> */}
           </Route>
-
-          <Route
-            path="wishlist"
-            element={
-              <Wishlist
-                likedProductsCodes={likedProductsCodes}
-                allProducts={allProducts}
-                onLikeProduct={handleLikedProductsCodes}
-              />
-            }
-          />
-
           <Route
             path="cart"
             element={
-              <Cart
-                cartProductsCodes={cartProductsCodes}
-                allProducts={allProducts}
-                onModifyCartProduct={handleCartProductsCodes}
-              ></Cart>
+              <>
+                <CommonHeader
+                  likedProductsCodes={likedProductsCodes}
+                  cartProductsCodes={cartProductsCodes}
+                />
+                <Cart
+                  cartProductsCodes={cartProductsCodes}
+                  allProducts={allProducts}
+                  onModifyCartProduct={handleCartProductsCodes}
+                ></Cart>
+              </>
+            }
+          />
+          <Route
+            path="wishlist"
+            element={
+              <>
+                <CommonHeader
+                  likedProductsCodes={likedProductsCodes}
+                  cartProductsCodes={cartProductsCodes}
+                />
+                <Wishlist
+                  likedProductsCodes={likedProductsCodes}
+                  allProducts={allProducts}
+                  onLikeProduct={handleLikedProductsCodes}
+                  cartProductsCodes={cartProductsCodes}
+                  onModifyCartProduct={handleCartProductsCodes}
+                />
+              </>
+            }
+          />
+          <Route
+            path="shop-by-category"
+            element={
+              <>
+                <CommonHeader
+                  likedProductsCodes={likedProductsCodes}
+                  cartProductsCodes={cartProductsCodes}
+                />
+                <Category
+                  allCategories={allCategories}
+                  onSelectCategory={handleSelectedCategory}
+                  selectedCategory={selectedCategory}
+                />
+                <Products selectedCategory={selectedCategory}>
+                  <Cards
+                    filteredProducts={filteredProducts}
+                    onLikeProduct={handleLikedProductsCodes}
+                    likedProductsCodes={likedProductsCodes}
+                    onSelectProduct={handleSelectedProduct}
+                  />
+                </Products>
+              </>
             }
           />
         </Routes>
-        {selectedProduct && (
+        <Footer />
+        {/* {selectedProduct && (
           <ProductView
             selectedProduct={selectedProduct}
             onModifyCartProduct={handleCartProductsCodes}
@@ -180,7 +247,7 @@ function App() {
             likedProductsCodes={likedProductsCodes}
             onSelectProduct={handleSelectedProduct}
           />
-        </BestSellers>
+        </BestSellers> */}
       </BrowserRouter>
     </>
   );
