@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const CategoryCard = ({
   category,
   onSelectCategory,
@@ -5,7 +7,8 @@ export const CategoryCard = ({
 }) => {
   return (
     <>
-      <div
+      <Link
+        to="products"
         className={
           selectedCategory === category
             ? "w-1/5 cursor-pointer  scale-105 duration-300 rounded-xl"
@@ -43,7 +46,7 @@ export const CategoryCard = ({
             <span>{category}</span>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 };

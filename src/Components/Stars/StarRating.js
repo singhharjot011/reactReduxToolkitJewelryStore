@@ -16,8 +16,8 @@ const textStyle = {
 };
 
 const starStyle = {
-  width: "48px",
-  height: "48px",
+  width: "24px",
+  height: "24px",
   display: "block",
   cursor: "pointer",
 };

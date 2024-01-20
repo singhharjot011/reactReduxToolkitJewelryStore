@@ -9,3 +9,7 @@ body {
 * {
   @apply selection:bg-pink-600 selection:text-gray-300;
 }
+
+.active {
+  font-weight: bold;
+}

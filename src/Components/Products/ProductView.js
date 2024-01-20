@@ -1,11 +1,15 @@
 import { MdOutlineLocalShipping } from "react-icons/md";
 import { useState } from "react";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 
 export default function ProductView({
   selectedProduct,
   onModifyCartProduct,
   cartProductsCodes,
 }) {
+
+
+  if (!selectedProduct) return;
   return (
     <>
       <section

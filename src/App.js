@@ -12,6 +12,8 @@ import ProductView from "./Components/Products/ProductView";
 import { useEffect, useState } from "react";
 import Wishlist from "./Components/Wishlist/Wishlist";
 import Cart from "./Components/Cart/Cart";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AppLayout from "./Pages/AppLayout";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -97,61 +99,89 @@ function App() {
 
   return (
     <>
-      <Header
-        likedProductsCodes={likedProductsCodes}
-        cartProductsCodes={cartProductsCodes}
-      />
-      <Navbar cartProductsCodes={cartProductsCodes} />
-      <Tagline1 />
-      <Category
-        allCategories={allCategories}
-        onSelectCategory={handleSelectedCategory}
-        selectedCategory={selectedCategory}
-      />
-      <Products>
-        <Cards
-          filteredProducts={filteredProducts}
-          onLikeProduct={handleLikedProductsCodes}
-          likedProductsCodes={likedProductsCodes}
-          onSelectProduct={handleSelectedProduct}
-        />
-      </Products>
-      <Wishlist
-        likedProductsCodes={likedProductsCodes}
-        allProducts={allProducts}
-        onLikeProduct={handleLikedProductsCodes}
-      />
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <AppLayout>
+                <Header
+                  likedProductsCodes={likedProductsCodes}
+                  cartProductsCodes={cartProductsCodes}
+                />
+                <Navbar cartProductsCodes={cartProductsCodes} />
+                <Tagline1 />
+                <Category
+                  allCategories={allCategories}
+                  onSelectCategory={handleSelectedCategory}
+                  selectedCategory={selectedCategory}
+                />
+              </AppLayout>
+            }
+          >
+            <Route
+              path="products"
+              element={
+                <Products selectedCategory={selectedCategory}>
+                  <Cards
+                    filteredProducts={filteredProducts}
+                    onLikeProduct={handleLikedProductsCodes}
+                    likedProductsCodes={likedProductsCodes}
+                    onSelectProduct={handleSelectedProduct}
+                  />
+                </Products>
+              }
+            ></Route>
+          </Route>
 
-      {selectedProduct && (
-        <ProductView
-          selectedProduct={selectedProduct}
-          onModifyCartProduct={handleCartProductsCodes}
-          cartProductsCodes={cartProductsCodes}
-        />
-      )}
-      <Featured>
-        <Cards
-          filteredProducts={filterFeaturedProducts}
-          selectedCategory={selectedCategory}
-          onLikeProduct={handleLikedProductsCodes}
-          likedProductsCodes={likedProductsCodes}
-          onSelectProduct={handleSelectedProduct}
-        />
-      </Featured>
-      <BestSellers>
-        <Cards
-          filteredProducts={filterBestSellers}
-          selectedCategory={selectedCategory}
-          onLikeProduct={handleLikedProductsCodes}
-          likedProductsCodes={likedProductsCodes}
-          onSelectProduct={handleSelectedProduct}
-        />
-      </BestSellers>
-      <Cart
-        cartProductsCodes={cartProductsCodes}
-        allProducts={allProducts}
-        onModifyCartProduct={handleCartProductsCodes}
-      ></Cart>
+          <Route
+            path="wishlist"
+            element={
+              <Wishlist
+                likedProductsCodes={likedProductsCodes}
+                allProducts={allProducts}
+                onLikeProduct={handleLikedProductsCodes}
+              />
+            }
+          />
+
+          <Route
+            path="cart"
+            element={
+              <Cart
+                cartProductsCodes={cartProductsCodes}
+                allProducts={allProducts}
+                onModifyCartProduct={handleCartProductsCodes}
+              ></Cart>
+            }
+          />
+        </Routes>
+        {selectedProduct && (
+          <ProductView
+            selectedProduct={selectedProduct}
+            onModifyCartProduct={handleCartProductsCodes}
+            cartProductsCodes={cartProductsCodes}
+          />
+        )}
+        <Featured>
+          <Cards
+            filteredProducts={filterFeaturedProducts}
+            selectedCategory={selectedCategory}
+            onLikeProduct={handleLikedProductsCodes}
+            likedProductsCodes={likedProductsCodes}
+            onSelectProduct={handleSelectedProduct}
+          />
+        </Featured>
+        <BestSellers>
+          <Cards
+            filteredProducts={filterBestSellers}
+            selectedCategory={selectedCategory}
+            onLikeProduct={handleLikedProductsCodes}
+            likedProductsCodes={likedProductsCodes}
+            onSelectProduct={handleSelectedProduct}
+          />
+        </BestSellers>
+      </BrowserRouter>
     </>
   );
 }
