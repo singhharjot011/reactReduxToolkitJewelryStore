@@ -6,7 +6,6 @@ export default function Featured({ children }) {
       <Tagline2 />
       <section id="featured" className=" p-10 bg-biege my-10">
         <div className="w-full text-center text-4xl my-5 textfont">
-          {" "}
           Featured
         </div>
 

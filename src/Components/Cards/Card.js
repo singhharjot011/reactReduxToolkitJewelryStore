@@ -1,9 +1,6 @@
 import { AiFillStar, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import Stars from "../Stars/Stars";
-
-const soldOutClass = "bg-white text-black text-sm p-1 absolute top-0 right-0";
-const saleClass = "bg-black text-white text-sm p-1 absolute top-0 right-0";
 
 export default function Card({
   product,
@@ -11,8 +8,12 @@ export default function Card({
   likedProductsCodes,
   onSelectProduct,
 }) {
+
   return (
-    <Link to="products" className="mt-10 ">
+    <Link
+      to={`${product.productCode}?name=${product.productName}&color=${product.color}`}
+      className="mt-10 "
+    >
       <div className="flex flex-col p-2  w-60 h-[350px] cursor-pointer rounded-xl bg-white">
         <div className="w-full h-4/5 group flex flex-col items-center justify-center relative ">
           <span

@@ -8,7 +8,7 @@ export const CategoryCard = ({
   return (
     <>
       <Link
-        to="/"
+        to="products"
         className={
           selectedCategory === category
             ? "w-1/5 cursor-pointer  scale-105 duration-300 rounded-xl"

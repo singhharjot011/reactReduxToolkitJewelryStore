@@ -1,6 +1,6 @@
 import "./App.css";
 import HeroHeader from "./Components/Headers/HeroHeader";
-import Navbar from "./Components/Navbar/Navbar";
+import Navbar from "./Components/Navbar/HeroNavbar";
 import Tagline1 from "./Components/Taglines/Tagline1";
 import Category from "./Components/Category/Category";
 import Featured from "./Components/Products/Featured";
@@ -16,6 +16,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppLayout from "./Pages/AppLayout";
 import CommonHeader from "./Components/Headers/CommonHeader";
 import Footer from "./Components/Footer/Footer";
+import PageNotFound from "./Pages/PageNotFound";
+import CommonNavbar from "./Components/Navbar/CommonNavbar";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -118,38 +120,10 @@ function App() {
                   onSelectCategory={handleSelectedCategory}
                   selectedCategory={selectedCategory}
                 />
-                {selectedCategory && (
-                  <Products selectedCategory={selectedCategory}>
-                    <Cards
-                      filteredProducts={filteredProducts}
-                      onLikeProduct={handleLikedProductsCodes}
-                      likedProductsCodes={likedProductsCodes}
-                      onSelectProduct={handleSelectedProduct}
-                    />
-                  </Products>
-                )}
-                <Featured>
-                  <Cards
-                    filteredProducts={filterFeaturedProducts}
-                    selectedCategory={selectedCategory}
-                    onLikeProduct={handleLikedProductsCodes}
-                    likedProductsCodes={likedProductsCodes}
-                    onSelectProduct={handleSelectedProduct}
-                  />
-                </Featured>
-                <BestSellers>
-                  <Cards
-                    filteredProducts={filterBestSellers}
-                    selectedCategory={selectedCategory}
-                    onLikeProduct={handleLikedProductsCodes}
-                    likedProductsCodes={likedProductsCodes}
-                    onSelectProduct={handleSelectedProduct}
-                  />
-                </BestSellers>
               </AppLayout>
             }
           >
-            {/* <Route
+            <Route
               path="products"
               element={
                 <Products selectedCategory={selectedCategory}>
@@ -161,7 +135,17 @@ function App() {
                   />
                 </Products>
               }
-            /> */}
+            />
+            <Route
+              path="products/:id"
+              element={
+                <ProductView
+                  selectedProduct={selectedProduct}
+                  onModifyCartProduct={handleCartProductsCodes}
+                  cartProductsCodes={cartProductsCodes}
+                />
+              }
+            />
           </Route>
           <Route
             path="cart"
@@ -221,7 +205,37 @@ function App() {
               </>
             }
           />
+          <Route
+            path="*"
+            element={
+              <>
+                <CommonHeader
+                  likedProductsCodes={likedProductsCodes}
+                  cartProductsCodes={cartProductsCodes}
+                />
+                <PageNotFound />
+              </>
+            }
+          />
         </Routes>
+        <Featured>
+          <Cards
+            filteredProducts={filterFeaturedProducts}
+            selectedCategory={selectedCategory}
+            onLikeProduct={handleLikedProductsCodes}
+            likedProductsCodes={likedProductsCodes}
+            onSelectProduct={handleSelectedProduct}
+          />
+        </Featured>
+        <BestSellers>
+          <Cards
+            filteredProducts={filterBestSellers}
+            selectedCategory={selectedCategory}
+            onLikeProduct={handleLikedProductsCodes}
+            likedProductsCodes={likedProductsCodes}
+            onSelectProduct={handleSelectedProduct}
+          />
+        </BestSellers>
         <Footer />
         {/* {selectedProduct && (
           <ProductView

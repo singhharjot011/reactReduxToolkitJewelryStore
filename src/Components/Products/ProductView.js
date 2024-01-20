@@ -1,31 +1,75 @@
-import { MdOutlineLocalShipping } from "react-icons/md";
+import {
+  MdOutlineLocalShipping,
+  MdOutlineArrowBack,
+  MdClose,
+} from "react-icons/md";
 import { useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 
 export default function ProductView({
   selectedProduct,
   onModifyCartProduct,
   cartProductsCodes,
 }) {
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  const pName = searchParams.get("name");
+  const pColor = searchParams.get("color");
+  const { id } = useParams();
+  console.log(id, pName, pColor);
+
+  const navigate = useNavigate();
 
   if (!selectedProduct) return;
   return (
     <>
       <section
         id="product-view"
-        className="flex py-5 h-[1000px]"
+        className="flex py-8 h-[550px] relative bg-babyPink"
         key={selectedProduct.productCode}
       >
+        <button
+          className="absolute right-5 top-5 text-4xl"
+          onClick={(e) => {
+            navigate(-1);
+          }}
+        >
+          <MdClose />
+        </button>
         <div
           id="product-image-slides"
-          className="flex flex-col flex-wrap p-5 gap-5 w-1/4 h-1/2"
+          className="flex flex-col flex-wrap p-5 gap-5 w-1/4 "
         >
-          <img src="" className="object-cover h-32 w-32 "></img>
-          <img src="" className="object-cover h-32 w-32 "></img>
-          <img src="" className="object-cover h-32 w-32 "></img>
-          <img src="" className="object-cover h-32 w-32 "></img>
-          <img src="" className="object-cover h-32 w-32 "></img>
+          <img
+            src={selectedProduct.img}
+            alt={selectedProduct.img}
+            className="object-cover h-32 w-32 "
+          ></img>
+          <img
+            src={selectedProduct.img}
+            alt={selectedProduct.img}
+            className="object-cover h-32 w-32 "
+          ></img>
+          <img
+            src={selectedProduct.img}
+            alt={selectedProduct.img}
+            className="object-cover h-32 w-32 "
+          ></img>
+          <img
+            src={selectedProduct.img}
+            alt={selectedProduct.img}
+            className="object-cover h-32 w-32 "
+          ></img>
+          <img
+            src={selectedProduct.img}
+            alt={selectedProduct.img}
+            className="object-cover h-32 w-32 "
+          ></img>
         </div>
         <div
           id="product-image"
@@ -33,7 +77,8 @@ export default function ProductView({
         >
           <img
             src={selectedProduct.img}
-            className="object-cover w-[550px] h-[750px]"
+            alt={selectedProduct.img}
+            className="object-cover w-[350px] h-[450px] rounded-xl"
           ></img>
         </div>
         <div id="product-details" className="flex flex-col w-1/4 mt-5  px-5">
@@ -53,9 +98,21 @@ export default function ProductView({
             <span className="w-full text-xl font-semibold ">
               {selectedProduct.color}
             </span>
-            <img src="" className="object-cover h-10 w-10 "></img>
-            <img src="" className="object-cover h-10 w-10 "></img>
-            <img src="" className="object-cover h-10 w-10 "></img>
+            <img
+              src={selectedProduct.img}
+              alt={selectedProduct.img}
+              className="object-cover h-10 w-10 "
+            ></img>
+            <img
+              src={selectedProduct.img}
+              alt={selectedProduct.img}
+              className="object-cover h-10 w-10 "
+            ></img>
+            <img
+              src={selectedProduct.img}
+              alt={selectedProduct.img}
+              className="object-cover h-10 w-10 "
+            ></img>
           </div>
           <hr />
           <div className="w-full flex justify-center items-center">
