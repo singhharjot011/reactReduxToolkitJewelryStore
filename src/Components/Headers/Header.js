@@ -15,8 +15,8 @@ function Header({ likedProductsCodes, cartProductsCodes, bgClass }) {
           <Link>
             <BsFillPersonFill />
           </Link>
-          <Link to="login">Login </Link> |<Link to="register">Register </Link>
-          <Link to="wishlist" className="relative">
+          <Link to="/login">Login </Link> |<Link to="register">Register </Link>
+          <Link to="/wishlist" className="relative">
             <BsHeart className="h-10" />
             <span className="absolute bottom-0 -right-2 text-xs  bg-biege text-black group-hover:text-white group-hover:bg-black rounded-full px-1">
               {likedProductsCodes.length}

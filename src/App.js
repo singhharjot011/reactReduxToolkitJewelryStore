@@ -12,12 +12,19 @@ import ProductView from "./Components/Products/ProductView";
 import { useEffect, useState } from "react";
 import Wishlist from "./Components/Wishlist/Wishlist";
 import Cart from "./Components/Cart/Cart";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  Outlet,
+} from "react-router-dom";
 import AppLayout from "./Pages/AppLayout";
 import CommonHeader from "./Components/Headers/CommonHeader";
 import Footer from "./Components/Footer/Footer";
 import PageNotFound from "./Pages/PageNotFound";
 import CommonNavbar from "./Components/Navbar/CommonNavbar";
+import ShopByCategoryLayout from "./Pages/ShopByCategoryLayout";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -105,6 +112,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          <Route index element={<Navigate replace to="products" />} />
           <Route
             path="/"
             element={
@@ -181,10 +189,10 @@ function App() {
               </>
             }
           />
-          <Route
+          {/* <Route
             path="shop-by-category"
             element={
-              <>
+              <ShopByCategoryLayout>
                 <CommonHeader
                   likedProductsCodes={likedProductsCodes}
                   cartProductsCodes={cartProductsCodes}
@@ -194,6 +202,12 @@ function App() {
                   onSelectCategory={handleSelectedCategory}
                   selectedCategory={selectedCategory}
                 />
+              </ShopByCategoryLayout>
+            }
+          >
+            <Route
+              path="category/:cat"
+              element={
                 <Products selectedCategory={selectedCategory}>
                   <Cards
                     filteredProducts={filteredProducts}
@@ -202,9 +216,20 @@ function App() {
                     onSelectProduct={handleSelectedProduct}
                   />
                 </Products>
-              </>
-            }
-          />
+              }
+            />
+            <Route
+              path="category/:cat/:pid"
+              element={
+                <ProductView
+                  selectedProduct={selectedProduct}
+                  onModifyCartProduct={handleCartProductsCodes}
+                  cartProductsCodes={cartProductsCodes}
+                />
+              }
+            />
+          </Route> */}
+
           <Route
             path="*"
             element={

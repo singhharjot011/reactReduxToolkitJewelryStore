@@ -20,8 +20,8 @@ export default function ProductView({
 
   const pName = searchParams.get("name");
   const pColor = searchParams.get("color");
-  const { id } = useParams();
-  console.log(id, pName, pColor);
+  const { id, pid, cat } = useParams();
+  console.log(id, pName, pColor, pid, cat);
 
   const navigate = useNavigate();
 

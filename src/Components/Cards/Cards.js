@@ -5,6 +5,7 @@ export default function Cards({
   likedProductsCodes,
   onSelectProduct,
 }) {
+  
   return (
     <div className="w-full h-full flex flex-wrap justify-evenly space-y-10 space-x-5 ">
       {filteredProducts.map((product) => (

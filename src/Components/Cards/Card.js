@@ -8,7 +8,6 @@ export default function Card({
   likedProductsCodes,
   onSelectProduct,
 }) {
-
   return (
     <Link
       to={`${product.productCode}?name=${product.productName}&color=${product.color}`}
@@ -34,7 +33,10 @@ export default function Card({
           <span
             className=" absolute top-2 left-2 hover:text-black/70 bg-biege rounded-full p-1 
   active:bg-biege/60"
-            onClick={(e) => onLikeProduct(product.productCode)}
+            onClick={(e) => {
+              e.preventDefault();
+              onLikeProduct(product.productCode);
+            }}
           >
             {likedProductsCodes?.includes(product.productCode) ? (
               <AiFillHeart key={crypto.randomUUID()} />
