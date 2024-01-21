@@ -1,41 +1,27 @@
-import {
-  MdOutlineLocalShipping,
-  MdOutlineArrowBack,
-  MdClose,
-} from "react-icons/md";
-import { useState } from "react";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearchParams,
-} from "react-router-dom";
+import { MdOutlineLocalShipping, MdClose } from "react-icons/md";
+
+import { useNavigate } from "react-router-dom";
 
 export default function ProductView({
   selectedProduct,
   onModifyCartProduct,
   cartProductsCodes,
 }) {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const pName = searchParams.get("name");
-  const pColor = searchParams.get("color");
-  const { id, pid, cat } = useParams();
-  console.log(id, pName, pColor, pid, cat);
-
   const navigate = useNavigate();
+  const body = document.querySelectorAll("#root > :not(.product-view-class)");
 
   if (!selectedProduct) return;
   return (
     <>
       <section
         id="product-view"
-        className="flex py-8 h-[550px] relative bg-babyPink"
+        className="product-view-class flex py-8 fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  rounded-xl shadow-lg bg-babyPink w-[calc(80%-2rem)] h-[calc(100%-4rem)]"
         key={selectedProduct.productCode}
       >
         <button
           className="absolute right-5 top-5 text-4xl"
           onClick={(e) => {
+            [...body].map((a) => a.classList.remove("opacity-20", "blur-sm"));
             navigate(-1);
           }}
         >

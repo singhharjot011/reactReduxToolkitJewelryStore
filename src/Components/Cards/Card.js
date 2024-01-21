@@ -8,10 +8,20 @@ export default function Card({
   likedProductsCodes,
   onSelectProduct,
 }) {
+  const body = document.querySelectorAll("#root > :not(.product-view-class)");
+  const [searchParams, setSearchParams] = useSearchParams();
+  // console.log(searchParams);
   return (
     <Link
-      to={`${product.productCode}?name=${product.productName}&color=${product.color}`}
-      className="mt-10 "
+      to={`/products/${product.productCode}?name=${product.productName}&color=${product.color}`}
+      className="show-product mt-10 "
+      onClick={
+        (e) => {
+          [...body].map((a) => a.classList.add("opacity-20", "blur-sm"));
+          console.log([...body].map((a) => a));
+        }
+        //
+      }
     >
       <div className="flex flex-col p-2  w-60 h-[350px] cursor-pointer rounded-xl bg-white">
         <div className="w-full h-4/5 group flex flex-col items-center justify-center relative ">

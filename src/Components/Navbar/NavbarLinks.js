@@ -7,9 +7,7 @@ function NavbarLinks({ cartProductsCodes }) {
       <NavLink to="/" id="nav-menu-items" className="">
         Home
       </NavLink>
-      <NavLink to="/" id="nav-menu-items" className="">
-        Shop By Category
-      </NavLink>
+
       <NavLink to="/our-story" id="nav-menu-items" className="">
         Our Story
       </NavLink>

@@ -9,22 +9,14 @@ import Products from "./Components/Products/Products";
 import Cards from "./Components/Cards/Cards";
 import BestSellers from "./Components/Products/BestSellers";
 import ProductView from "./Components/Products/ProductView";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Wishlist from "./Components/Wishlist/Wishlist";
 import Cart from "./Components/Cart/Cart";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  Outlet,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AppLayout from "./Pages/AppLayout";
 import CommonHeader from "./Components/Headers/CommonHeader";
-import Footer from "./Components/Footer/Footer";
+
 import PageNotFound from "./Pages/PageNotFound";
-import CommonNavbar from "./Components/Navbar/CommonNavbar";
-import ShopByCategoryLayout from "./Pages/ShopByCategoryLayout";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -116,32 +108,42 @@ function App() {
           <Route
             path="/"
             element={
-              <AppLayout>
-                <HeroHeader
-                  likedProductsCodes={likedProductsCodes}
-                  cartProductsCodes={cartProductsCodes}
-                />
-                <Navbar cartProductsCodes={cartProductsCodes} />
-                <Tagline1 />
-                <Category
-                  allCategories={allCategories}
-                  onSelectCategory={handleSelectedCategory}
+              <>
+                <AppLayout
+                  filteredProducts={filterFeaturedProducts}
                   selectedCategory={selectedCategory}
-                />
-              </AppLayout>
+                  onLikeProduct={handleLikedProductsCodes}
+                  likedProductsCodes={likedProductsCodes}
+                  onSelectProduct={handleSelectedProduct}
+                >
+                  <HeroHeader
+                    likedProductsCodes={likedProductsCodes}
+                    cartProductsCodes={cartProductsCodes}
+                  />
+                  <Navbar cartProductsCodes={cartProductsCodes} />
+                  <Tagline1 />
+                  <Category
+                    allCategories={allCategories}
+                    onSelectCategory={handleSelectedCategory}
+                    selectedCategory={selectedCategory}
+                  />
+                </AppLayout>
+              </>
             }
           >
             <Route
               path="products"
               element={
-                <Products selectedCategory={selectedCategory}>
-                  <Cards
-                    filteredProducts={filteredProducts}
-                    onLikeProduct={handleLikedProductsCodes}
-                    likedProductsCodes={likedProductsCodes}
-                    onSelectProduct={handleSelectedProduct}
-                  />
-                </Products>
+                <>
+                  <Products selectedCategory={selectedCategory}>
+                    <Cards
+                      filteredProducts={filteredProducts}
+                      onLikeProduct={handleLikedProductsCodes}
+                      likedProductsCodes={likedProductsCodes}
+                      onSelectProduct={handleSelectedProduct}
+                    />
+                  </Products>
+                </>
               }
             />
             <Route
@@ -189,46 +191,6 @@ function App() {
               </>
             }
           />
-          {/* <Route
-            path="shop-by-category"
-            element={
-              <ShopByCategoryLayout>
-                <CommonHeader
-                  likedProductsCodes={likedProductsCodes}
-                  cartProductsCodes={cartProductsCodes}
-                />
-                <Category
-                  allCategories={allCategories}
-                  onSelectCategory={handleSelectedCategory}
-                  selectedCategory={selectedCategory}
-                />
-              </ShopByCategoryLayout>
-            }
-          >
-            <Route
-              path="category/:cat"
-              element={
-                <Products selectedCategory={selectedCategory}>
-                  <Cards
-                    filteredProducts={filteredProducts}
-                    onLikeProduct={handleLikedProductsCodes}
-                    likedProductsCodes={likedProductsCodes}
-                    onSelectProduct={handleSelectedProduct}
-                  />
-                </Products>
-              }
-            />
-            <Route
-              path="category/:cat/:pid"
-              element={
-                <ProductView
-                  selectedProduct={selectedProduct}
-                  onModifyCartProduct={handleCartProductsCodes}
-                  cartProductsCodes={cartProductsCodes}
-                />
-              }
-            />
-          </Route> */}
 
           <Route
             path="*"
@@ -243,50 +205,6 @@ function App() {
             }
           />
         </Routes>
-        <Featured>
-          <Cards
-            filteredProducts={filterFeaturedProducts}
-            selectedCategory={selectedCategory}
-            onLikeProduct={handleLikedProductsCodes}
-            likedProductsCodes={likedProductsCodes}
-            onSelectProduct={handleSelectedProduct}
-          />
-        </Featured>
-        <BestSellers>
-          <Cards
-            filteredProducts={filterBestSellers}
-            selectedCategory={selectedCategory}
-            onLikeProduct={handleLikedProductsCodes}
-            likedProductsCodes={likedProductsCodes}
-            onSelectProduct={handleSelectedProduct}
-          />
-        </BestSellers>
-        <Footer />
-        {/* {selectedProduct && (
-          <ProductView
-            selectedProduct={selectedProduct}
-            onModifyCartProduct={handleCartProductsCodes}
-            cartProductsCodes={cartProductsCodes}
-          />
-        )}
-        <Featured>
-          <Cards
-            filteredProducts={filterFeaturedProducts}
-            selectedCategory={selectedCategory}
-            onLikeProduct={handleLikedProductsCodes}
-            likedProductsCodes={likedProductsCodes}
-            onSelectProduct={handleSelectedProduct}
-          />
-        </Featured>
-        <BestSellers>
-          <Cards
-            filteredProducts={filterBestSellers}
-            selectedCategory={selectedCategory}
-            onLikeProduct={handleLikedProductsCodes}
-            likedProductsCodes={likedProductsCodes}
-            onSelectProduct={handleSelectedProduct}
-          />
-        </BestSellers> */}
       </BrowserRouter>
     </>
   );
