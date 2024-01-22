@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BsTrash3 } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export default function Cart({
   cartProductsCodes,
@@ -18,15 +19,7 @@ export default function Cart({
       <section className="p-10">
         <h2 className="text-center text-4xl p-4">Your Shopping Bag</h2>
         <div className="flex  bg-biege shadow-lg w-full">
-          {cartProductsCodes.length === 0 && (
-            <div className="flex w-full h-72 justify-center items-center">
-              <span className="text-3xl font-semibold">
-                Uhh Ohhhh Why So Empty?
-              </span>
-            </div>
-          )}
-
-          {cartProductsCodes.length > 0 && (
+          {cartProductsCodes.length > 0 ? (
             <>
               <div className="w-2/3 h-full p-4">
                 {filterCartProducts.map((product) => (
@@ -47,6 +40,16 @@ export default function Cart({
                 />
               </div>
             </>
+          ) : (
+            <div className="flex flex-col space-y-6 w-full h-72 justify-center items-center">
+              <span className="text-3xl font-semibold">
+                Uhh Ohhhh Why So Empty?
+              </span>
+
+              <Link to="/">
+                <span className="bg-black text-biege p-4">Go Shopping</span>
+              </Link>
+            </div>
           )}
         </div>
       </section>

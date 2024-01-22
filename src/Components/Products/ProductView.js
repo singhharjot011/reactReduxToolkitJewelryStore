@@ -15,7 +15,7 @@ export default function ProductView({
     <>
       <section
         id="product-view"
-        className="product-view-class flex py-8 fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  rounded-xl shadow-lg bg-babyPink w-[calc(80%-2rem)] h-[calc(100%-4rem)]"
+        className="product-view-class border-8 border-white  flex py-8 fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  rounded-xl shadow-lg bg-babyPink w-[calc(80%-2rem)] h-[calc(100%-4rem)]"
         key={selectedProduct.productCode}
       >
         <button

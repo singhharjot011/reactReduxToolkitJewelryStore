@@ -2,9 +2,9 @@ const Tagline3 = () => {
   return (
     <section
       id="tagline3"
-      className="p-10  bg-biege shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
+      className="p-10 self-center w-[calc(90%-2rem)] mt-5 bg-biege shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
     >
-      <div className="flex flex-col justify-center p-5 mt-10 mb-10">
+      <div className="flex flex-col justify-center p-5 mt-5 mb-5">
         <div className="w-full text-center text-4xl">
           <span>Love at First Sight</span>
         </div>

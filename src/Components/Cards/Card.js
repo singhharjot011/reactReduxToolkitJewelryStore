@@ -12,18 +12,8 @@ export default function Card({
   const [searchParams, setSearchParams] = useSearchParams();
   // console.log(searchParams);
   return (
-    <Link
-      to={`/products/${product.productCode}?name=${product.productName}&color=${product.color}`}
-      className="show-product mt-10 "
-      onClick={
-        (e) => {
-          [...body].map((a) => a.classList.add("opacity-20", "blur-sm"));
-          console.log([...body].map((a) => a));
-        }
-        //
-      }
-    >
-      <div className="flex flex-col p-2  w-60 h-[350px] cursor-pointer rounded-xl bg-white">
+    <div className="mt-10">
+      <div className="flex flex-col p-2  w-60 h-[350px]  rounded-xl bg-white">
         <div className="w-full h-4/5 group flex flex-col items-center justify-center relative ">
           <span
             className={`${
@@ -41,7 +31,7 @@ export default function Card({
             {product?.statusTag}
           </span>
           <span
-            className=" absolute top-2 left-2 hover:text-black/70 bg-biege rounded-full p-1 
+            className=" absolute top-2 left-2 hover:text-black/70 cursor-pointer bg-biege rounded-full p-1 
   active:bg-biege/60"
             onClick={(e) => {
               e.preventDefault();
@@ -58,11 +48,20 @@ export default function Card({
             src={product?.img}
             alt={product?.productName}
             className="h-full w-full object-cover  rounded-xl"
-            onClick={(e) => onSelectProduct(product)}
           ></img>
-          <span className="bg-black text-white  p-2 absolute bottom-10  w-3/4 text-center opacity-0 group-hover:opacity-100 duration-500">
+          <Link
+            to={`/products/${product.productCode}?name=${product.productName}&color=${product.color}`}
+            className="bg-black text-white cursor-pointer  p-2 absolute bottom-10  w-3/4 text-center opacity-0 group-hover:opacity-100 duration-500"
+            onClick={
+              (e) => {
+                onSelectProduct(product);
+                [...body].map((a) => a.classList.add("opacity-20", "blur-sm"));
+              }
+              //
+            }
+          >
             Quick View
-          </span>
+          </Link>
         </div>
         <div className="self-center p-2 h-1/5  flex flex-col text-center">
           <strong>{product?.productName}</strong>
@@ -75,6 +74,6 @@ export default function Card({
           </span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

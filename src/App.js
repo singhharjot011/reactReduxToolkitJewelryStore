@@ -17,6 +17,7 @@ import AppLayout from "./Pages/AppLayout";
 import CommonHeader from "./Components/Headers/CommonHeader";
 
 import PageNotFound from "./Pages/PageNotFound";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -170,6 +171,7 @@ function App() {
                   allProducts={allProducts}
                   onModifyCartProduct={handleCartProductsCodes}
                 ></Cart>
+                <Footer />
               </>
             }
           />
@@ -188,6 +190,7 @@ function App() {
                   cartProductsCodes={cartProductsCodes}
                   onModifyCartProduct={handleCartProductsCodes}
                 />
+                <Footer />
               </>
             }
           />
@@ -201,6 +204,7 @@ function App() {
                   cartProductsCodes={cartProductsCodes}
                 />
                 <PageNotFound />
+                <Footer />
               </>
             }
           />
