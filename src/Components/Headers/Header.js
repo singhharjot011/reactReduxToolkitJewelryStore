@@ -1,14 +1,35 @@
+import { useEffect, useState } from "react";
 import { BsGlobe, BsFillPersonFill, BsHeart } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import NavbarLinks from "../Navbar/NavbarLinks";
 
+const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
+
 function Header({ likedProductsCodes, cartProductsCodes, bgClass }) {
+  const [countryName, setCountryName] = useState("Canada");
+
+  useEffect(function () {
+    async function fetchCountry() {
+      try {
+        if (!navigator.geolocation) return;
+        const res = await fetch(`${BASE_URL}`);
+
+        const data = await res.json();
+        setCountryName(data.countryName);
+      } catch (err) {
+        console.error(err.message);
+      } finally {
+      }
+    }
+    fetchCountry();
+  }, []);
+
   return (
     <section className={bgClass}>
       <div className="w-full flex justify-between p-2 ">
         <Link to="/" className="flex items-center gap-2">
           <BsGlobe />
-          Canada | en_US
+          {countryName} | {navigator.language}
         </Link>
         <span>Free Standard Shipping over $100</span>
         <span className="flex items-center gap-2">
