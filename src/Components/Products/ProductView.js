@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { MdOutlineLocalShipping, MdClose } from "react-icons/md";
 
 import { useNavigate } from "react-router-dom";
@@ -8,7 +9,22 @@ export default function ProductView({
   cartProductsCodes,
 }) {
   const navigate = useNavigate();
+
   const body = document.querySelectorAll("#root > :not(.product-view-class)");
+  const [curDispImg, setCurDispImg] = useState(selectedProduct.img);
+  function handleImgClick(i) {
+    setCurDispImg(i);
+  }
+
+  function getColorClass(c) {
+    if (c === "gold") return "bg-[#FFD700]";
+    if (c === "silver") return "bg-gray-200";
+    if (c === "blue") return "bg-blue-700";
+
+    if (c === "white") return "bg-white border border-1";
+    if (c.startsWith("rose")) return "bg-[#b76e79]/50 border border-1";
+    else return "bg-gray-200";
+  }
 
   if (!selectedProduct) return;
   return (
@@ -31,39 +47,25 @@ export default function ProductView({
           id="product-image-slides"
           className="flex flex-col flex-wrap p-5 gap-5 w-1/4 "
         >
-          <img
-            src={selectedProduct.img}
-            alt={selectedProduct.img}
-            className="object-cover h-32 w-32 "
-          ></img>
-          <img
-            src={selectedProduct.img}
-            alt={selectedProduct.img}
-            className="object-cover h-32 w-32 "
-          ></img>
-          <img
-            src={selectedProduct.img}
-            alt={selectedProduct.img}
-            className="object-cover h-32 w-32 "
-          ></img>
-          <img
-            src={selectedProduct.img}
-            alt={selectedProduct.img}
-            className="object-cover h-32 w-32 "
-          ></img>
-          <img
-            src={selectedProduct.img}
-            alt={selectedProduct.img}
-            className="object-cover h-32 w-32 "
-          ></img>
+          {selectedProduct.imgArr?.map((i) => (
+            <img
+              src={i}
+              alt="random"
+              className={`object-cover h-32 w-1/2 cursor-pointer ${
+                curDispImg === i ? "opacity-40" : ""
+              }`}
+              onClick={() => handleImgClick(i)}
+              key={crypto.randomUUID()}
+            ></img>
+          ))}
         </div>
         <div
           id="product-image"
           className="flex flex-wrap justify-center w-1/2 mt-5"
         >
           <img
-            src={selectedProduct.img}
-            alt={selectedProduct.img}
+            src={curDispImg}
+            alt={selectedProduct.productName}
             className="object-cover w-[350px] h-[450px] rounded-xl"
           ></img>
         </div>
@@ -84,21 +86,11 @@ export default function ProductView({
             <span className="w-full text-xl font-semibold ">
               {selectedProduct.color}
             </span>
-            <img
-              src={selectedProduct.img}
-              alt={selectedProduct.img}
-              className="object-cover h-10 w-10 "
-            ></img>
-            <img
-              src={selectedProduct.img}
-              alt={selectedProduct.img}
-              className="object-cover h-10 w-10 "
-            ></img>
-            <img
-              src={selectedProduct.img}
-              alt={selectedProduct.img}
-              className="object-cover h-10 w-10 "
-            ></img>
+            <span
+              className={`${getColorClass(
+                selectedProduct.color
+              )} rounded-full h-8 w-8 `}
+            ></span>
           </div>
           <hr />
           <div className="w-full flex justify-center items-center">

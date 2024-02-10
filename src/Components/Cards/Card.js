@@ -60,7 +60,7 @@ export default function Card({
               //
             }
           >
-            Quick View
+            View Product
           </Link>
         </div>
         <div className="self-center p-2 h-1/5  flex flex-col text-center">
