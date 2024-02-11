@@ -133,7 +133,7 @@ function App() {
             }
           >
             <Route
-              path="products"
+              path="/products"
               element={
                 <>
                   <Products selectedCategory={selectedCategory}>

@@ -70,7 +70,7 @@ export default function Card({
             {product?.newPrice}
           </span>
           <span className="flex self-center text-yellow-400 ">
-            <Stars rating={product.rating} />
+            <Stars rating={product?.rating} />
           </span>
         </div>
       </div>
