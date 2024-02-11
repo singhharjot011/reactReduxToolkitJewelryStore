@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdOutlineLocalShipping, MdClose } from "react-icons/md";
 
 import { useNavigate } from "react-router-dom";
@@ -10,11 +10,15 @@ export default function ProductView({
 }) {
   const navigate = useNavigate();
 
-  const body = document.querySelectorAll("#root > :not(.product-view-class)");
   const [curDispImg, setCurDispImg] = useState(selectedProduct.img);
   function handleImgClick(i) {
     setCurDispImg(i);
   }
+
+  useEffect(() => {
+    const body = document.querySelectorAll("#root > :not(.product-view-class)");
+    [...body].map((a) => a.classList.remove("opacity-20", "blur-sm"));
+  }, []);
 
   function getColorClass(c) {
     if (c === "gold") return "bg-[#FFD700]";
@@ -37,7 +41,7 @@ export default function ProductView({
         <button
           className="absolute right-5 top-5 text-4xl"
           onClick={(e) => {
-            [...body].map((a) => a.classList.remove("opacity-20", "blur-sm"));
+            // [...body].map((a) => a.classList.remove("opacity-20", "blur-sm"));
             navigate(-1);
           }}
         >

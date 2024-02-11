@@ -105,7 +105,6 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route index element={<Navigate replace to="products" />} />
           <Route
             path="/"
             element={
@@ -133,7 +132,7 @@ function App() {
             }
           >
             <Route
-              path="/products"
+              path="products"
               element={
                 <>
                   <Products selectedCategory={selectedCategory}>
@@ -196,7 +195,7 @@ function App() {
           />
 
           <Route
-            path="*"
+            path="/*"
             element={
               <>
                 <CommonHeader

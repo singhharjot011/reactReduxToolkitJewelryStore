@@ -8,7 +8,7 @@ export default function Card({
   likedProductsCodes,
   onSelectProduct,
 }) {
-  const body = document.querySelectorAll("#root > :not(.product-view-class)");
+  // const body = document.querySelectorAll("#root > :not(.product-view-class)");
   const [searchParams, setSearchParams] = useSearchParams();
   // console.log(searchParams);
   return (
@@ -55,7 +55,7 @@ export default function Card({
             onClick={
               (e) => {
                 onSelectProduct(product);
-                [...body].map((a) => a.classList.add("opacity-20", "blur-sm"));
+                // [...body].map((a) => a.classList.add("opacity-20", "blur-sm"));
               }
               //
             }
