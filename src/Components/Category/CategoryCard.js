@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const CategoryCard = ({
   category,
   onSelectCategory,
   selectedCategory,
 }) => {
+  const navigate = useNavigate();
   return (
     <>
       <Link
@@ -15,7 +16,10 @@ export const CategoryCard = ({
             : "w-1/5 cursor-pointer hover:scale-105 duration-300"
         }
         id="categories"
-        onClick={() => onSelectCategory(category)}
+        onClick={() => {
+          if (selectedCategory) navigate(-1);
+          onSelectCategory(category);
+        }}
       >
         <div className="flex flex-col h-full p-2 ">
           <div className="flex relative h-full w-full justify-center">

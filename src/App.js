@@ -81,25 +81,7 @@ function App() {
       );
   }
 
-  useEffect(
-    function () {
-      localStorage.setItem(
-        "likedProductsCodes",
-        JSON.stringify(likedProductsCodes)
-      );
-    },
-    [likedProductsCodes]
-  );
 
-  useEffect(
-    function () {
-      localStorage.setItem(
-        "cartProductsCodes",
-        JSON.stringify(cartProductsCodes)
-      );
-    },
-    [cartProductsCodes]
-  );
 
   return (
     <>
