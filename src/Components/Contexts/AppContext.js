@@ -6,20 +6,16 @@ const AppContext = createContext();
 const initialState = {
   selectedCategory: null,
   allProducts: Data,
-  likedProductsCodes: likedProducts,
+  likedProductsCodes: () => {
+    const cartCodes = localStorage.getItem("likedProductsCodes");
+    return cartCodes ? JSON.parse(cartCodes) : [];
+  },
   selectedProduct: null,
   cartProductsCodes: () => {
     const cartCodes = localStorage.getItem("cartProductsCodes");
     return cartCodes ? JSON.parse(cartCodes) : [];
   },
 };
-
-useEffect(() => {
-  const likedCodes = localStorage.getItem("likedProductsCodes");
-  const likedProducts = likedCodes ? JSON.parse(likedCodes) : [];
-  const cartCodes = localStorage.getItem("cartProductsCodes");
-  const cartProducts = cartCodes ? JSON.parse(cartCodes) : [];
-}, []);
 
 function reducer(state, action) {
   switch (action.type) {
