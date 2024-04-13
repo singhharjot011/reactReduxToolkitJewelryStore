@@ -5,6 +5,9 @@ import ProductsCard from "./ProductsCard";
 
 export default function Products() {
   const allProducts = useSelector((state) => state.products.products);
+  // const allProducts = useLoaderData();
+  // console.log(useLoaderData());
+
   const { selectedCategory } = useSelector((state) => state.products);
   const filteredProducts = selectedCategory
     ? allProducts.filter((item) => item.category === selectedCategory)
@@ -29,5 +32,6 @@ export default function Products() {
 
 export async function loader() {
   const products = await getProducts();
+  console.log(products)
   return products;
 }

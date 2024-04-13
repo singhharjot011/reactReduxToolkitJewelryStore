@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Copyright from "./Copyright";
 
 function Footer() {
@@ -7,100 +6,96 @@ function Footer() {
       <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
-            <Link
-              to="/"
-              href="https://reactjewels.netlify.app/products"
-              class="flex items-center"
-            >
+            <div class="flex items-center">
               <img
-                className="h-8 me-3"
+                className="me-3 h-8"
                 alt="ReactJewels Logo"
                 src="https://pngimg.com/d/jewelry_PNG6770.png"
               ></img>
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+              <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
                 React Jewels
               </span>
-            </Link>
+            </div>
           </div>
-          <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+          <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
             <div>
-              <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 class="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
                 Customer Service &amp; FAQ
               </h2>
-              <ul class="text-gray-500 dark:text-gray-400 font-medium">
+              <ul class="font-medium text-gray-500 dark:text-gray-400">
                 <li class="mb-4">
-                  <Link
+                  <div
                     to="/"
                     href="https://flowbite.com/"
                     class="hover:underline"
                   >
                     Customer Service Overview
-                  </Link>
+                  </div>
                 </li>
                 <li>
-                  <Link to="/" class="hover:underline">
+                  <div to="/" class="hover:underline">
                     Order Status
-                  </Link>
+                  </div>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 class="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
                 Follow us
               </h2>
-              <ul class="text-gray-500 dark:text-gray-400 font-medium">
+              <ul class="font-medium text-gray-500 dark:text-gray-400">
                 <li class="mb-4">
-                  <Link
+                  <div
                     to="https://github.com/singhharjot011"
                     target="main"
                     class="hover:underline "
                   >
                     Github
-                  </Link>
+                  </div>
                 </li>
                 <li>
-                  <Link
+                  <div
                     to="https://www.youtube.com/channel/UCJdwMFe0r_xBv5N0586jbPA"
                     target="main"
                     class="hover:underline"
                   >
                     Youtube
-                  </Link>
+                  </div>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 class="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
                 Legal
               </h2>
-              <ul class="text-gray-500 dark:text-gray-400 font-medium">
+              <ul class="font-medium text-gray-500 dark:text-gray-400">
                 <li class="mb-4">
-                  <Link to="/" class="hover:underline">
+                  <div to="/" class="hover:underline">
                     Privacy Policy
-                  </Link>
+                  </div>
                 </li>
                 <li>
-                  <Link to="/" class="hover:underline">
+                  <div to="/" class="hover:underline">
                     Terms &amp; Conditions
-                  </Link>
+                  </div>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8 dark:border-gray-700" />
         <div class="sm:flex sm:items-center sm:justify-between">
           <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
             <Copyright />
           </span>
-          <div class="flex mt-4 sm:justify-center sm:mt-0">
-            <Link
+          <div class="mt-4 flex sm:mt-0 sm:justify-center">
+            <div
               to="/"
               href="#"
               class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
               <svg
-                class="w-4 h-4"
+                class="h-4 w-4"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -113,14 +108,14 @@ function Footer() {
                 />
               </svg>
               <span class="sr-only">Facebook page</span>
-            </Link>
+            </div>
 
-            <Link
+            <div
               to="/"
-              class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+              class="ms-5 text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
               <svg
-                class="w-4 h-4"
+                class="h-4 w-4"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -133,14 +128,14 @@ function Footer() {
                 />
               </svg>
               <span class="sr-only">Twitter page</span>
-            </Link>
-            <Link
+            </div>
+            <div
               to="https://github.com/singhharjot011"
               target="main"
-              class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+              class="ms-5 text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
               <svg
-                class="w-4 h-4"
+                class="h-4 w-4"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -153,7 +148,7 @@ function Footer() {
                 />
               </svg>
               <span class="sr-only">GitHub account</span>
-            </Link>
+            </div>
           </div>
         </div>
       </div>
