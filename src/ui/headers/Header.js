@@ -1,8 +1,16 @@
+import { useSelector } from "react-redux";
+import CartIcon from "../icons/CartIcon";
+import PersonIcon from "../icons/PersonIcon";
+import WorldIcon from "../icons/WorldIcon";
 import NavbarLinks from "../Navbar/NavbarLinks";
 
 // const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
-function Header({ likedProductsCodes, cartProductsCodes, bgClass }) {
+function Header() {
+  const cartItemsCount = useSelector(
+    (state) => state.products.cartItems,
+  )?.length;
+
   //   const [countryName, setCountryName] = useState("Canada");
 
   //   useEffect(function () {
@@ -23,23 +31,24 @@ function Header({ likedProductsCodes, cartProductsCodes, bgClass }) {
 
   return (
     <section>
-      <div className="w-full flex justify-between p-2 ">
+      <div className="flex w-full justify-between p-2 ">
         <div className="flex items-center gap-2">
-          <span> 🌐</span>
+          <WorldIcon height={"20px"} width={"20px"} />
           CA | en_CA
         </div>
         <span>Free Standard Shipping over $100</span>
         <span className="flex items-center gap-2">
-          <div>🧑</div>
-          <div to="/login">Login </div> |<div to="register">Register </div>
-          <div to="/wishlist" className="relative">
-            <span className="absolute bottom-0 -right-2 text-xs  bg-biege text-black group-hover:text-white group-hover:bg-black rounded-full px-1">
-              1
+          <PersonIcon height={"20px"} width={"20px"} />
+          <div>Login </div> |<div to="register">Register </div>
+          <div className="relative cursor-pointer">
+            <CartIcon height={"20px"} />
+            <span className="absolute -bottom-2 -right-2 rounded-full border border-black bg-biege px-1 text-xs text-black group-hover:bg-black group-hover:text-white">
+              {cartItemsCount}
             </span>
           </div>
         </span>
       </div>
-      <div className="w-full flex  justify-center ">
+      <div className="flex w-full  justify-center ">
         <div to="/">
           <h1 className="text-6xl" id="brand-name">
             React Jewels
@@ -47,7 +56,7 @@ function Header({ likedProductsCodes, cartProductsCodes, bgClass }) {
         </div>
       </div>
       <div
-        className="w-full flex  items-center justify-center space-x-4 p-3"
+        className="flex w-full  items-center justify-center space-x-4 p-3"
         id="header-menu"
       >
         <NavbarLinks />

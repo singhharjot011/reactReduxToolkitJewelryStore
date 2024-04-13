@@ -4,8 +4,8 @@ import FeaturedProducts from "../features/products/FeaturedProducts";
 import Tagline from "../ui/Tagline";
 import BestSellersProducts from "../features/products/BestSellerProducts";
 import Products from "../features/products/Products";
-import { useLoaderData } from "react-router-dom";
-import { useSelector } from "react-redux";
+import Wishlist from "../features/wishlist/Wishlist";
+import Cart from "../features/cart/Cart";
 
 function AppLayout() {
   return (
@@ -21,6 +21,8 @@ function AppLayout() {
       <Products />
       <FeaturedProducts />
       <BestSellersProducts />
+      <Wishlist />
+      <Cart />
     </>
   );
 }

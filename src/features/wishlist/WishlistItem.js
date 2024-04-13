@@ -1,35 +1,50 @@
-function WishlistItem() {
+import { useDispatch, useSelector } from "react-redux";
+import TrashIcon from "../../ui/icons/TrashIcon";
+import { addToCart, likeItem } from "../products/productSlice";
+
+function WishlistItem({ item }) {
+  const { cartItems } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+
   return (
     <>
-      <div className=" flex items-center justify-center bg-yellow-500 w-full">
-        <div className="p-5 w-1/3">
+      <div className=" flex w-full items-center justify-center bg-yellow-500">
+        <div className="w-1/3 p-5">
           <img
-            src=""
-            alt="Product Name"
+            src={item.img}
+            alt={item.productName}
             className="h-60 w-60 object-cover object-center"
           ></img>
         </div>
-        <div className="flex flex-col space-y-5 w-1/3">
+        <div className="flex w-1/3 flex-col space-y-5">
           <div className="flex flex-col">
-            <h4 className="text-lg font-semibold">Product Name</h4>
-            <span>Product Code: </span>
-            <span>Price: </span>
+            <h4 className="text-lg font-semibold">{item.productName}</h4>
+            <span>Product Code:{item.productCode} </span>
+            <span>Price: {item.newPrice} </span>
           </div>
           <div className="flex space-x-5">
             <button
               className=" hover:text-black/70 active:text-white"
-              onClick={(e) => {}}
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(likeItem(item.productCode));
+              }}
             >
-              🚮
+              <TrashIcon height="20px" />
             </button>
           </div>
           <div className="">
             <button
               id="add-to-cart-btn"
-              className="bg-black text-biege w-2/3 mt-3  rounded border-black border hover:bg-biege hover:text-black active:bg-white"
-              onClick={() => {}}
+              className="mt-3 w-2/3 rounded border  border-black bg-black text-biege hover:bg-biege hover:text-black active:bg-white"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(addToCart(item.productCode));
+              }}
             >
-              Add To Cart
+              {cartItems.includes(item.productCode)
+                ? "Remove from Cart"
+                : "Add To Cart"}
             </button>
           </div>
         </div>
