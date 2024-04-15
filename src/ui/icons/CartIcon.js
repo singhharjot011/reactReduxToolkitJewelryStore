@@ -1,4 +1,4 @@
-function CartIcon({ height, width, color = "" }) {
+function CartIcon({ height, width }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

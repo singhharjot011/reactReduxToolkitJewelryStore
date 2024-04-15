@@ -1,12 +1,17 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
-import { loader as productsLoader } from "./features/products/Products";
 import AppLayout from "./ui/AppLayout";
 import PageNotFound from "./ui/PageNotFound";
-import Category from "./features/category/Category";
-import Products from "./features/products/Products";
-import FeaturedProducts from "./features/products/FeaturedProducts";
-import BestSellersProducts from "./features/products/BestSellerProducts";
+import Products, {
+  loader as productsLoader,
+} from "./features/products/Products";
+import ProductView, {
+  loader as productDetailsLoader,
+} from "./features/products/ProductView";
 import Wishlist from "./features/wishlist/Wishlist";
 import Cart from "./features/cart/Cart";
 
@@ -18,29 +23,24 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Products />,
-        // loader: productsLoader,
+        errorElement: <PageNotFound />,
+        loader: productsLoader,
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist />,
         errorElement: <PageNotFound />,
       },
       {
-        path: "/",
-        element: <Category />,
-      },
-
-      {
-        path: "/",
-        element: <FeaturedProducts />,
-      },
-      {
-        path: "/",
-        element: <BestSellersProducts />,
-      },
-      {
-        path: "/",
-        element: <Wishlist />,
-      },
-      {
-        path: "/",
+        path: "/cart",
         element: <Cart />,
+        errorElement: <PageNotFound />,
+      },
+      {
+        path: "/product/:productCode",
+        element: <ProductView />,
+        errorElement: <PageNotFound />,
+        loader: productDetailsLoader,
       },
     ],
   },

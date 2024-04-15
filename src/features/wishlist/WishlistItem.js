@@ -4,6 +4,7 @@ import { addToCart, likeItem } from "../products/productSlice";
 
 function WishlistItem({ item }) {
   const { cartItems } = useSelector((state) => state.products);
+
   const dispatch = useDispatch();
 
   return (

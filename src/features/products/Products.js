@@ -1,12 +1,13 @@
 import { useSelector } from "react-redux";
-import { useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
 import { getProducts } from "../../services/apiStore";
+import BestSellersProducts from "./BestSellerProducts";
+import FeaturedProducts from "./FeaturedProducts";
 import ProductsCard from "./ProductsCard";
+import Category from "../category/Category";
 
 export default function Products() {
-  const allProducts = useSelector((state) => state.products.products);
-  // const allProducts = useLoaderData();
-  // console.log(useLoaderData());
+  const allProducts = useLoaderData();
 
   const { selectedCategory } = useSelector((state) => state.products);
   const filteredProducts = selectedCategory
@@ -15,6 +16,7 @@ export default function Products() {
 
   return (
     <>
+      <Category />
       <section
         id="products"
         className="relative flex flex-wrap justify-evenly p-5 "
@@ -26,12 +28,13 @@ export default function Products() {
           <ProductsCard item={item} key={item.productCode} />
         ))}
       </section>
+      <FeaturedProducts />
+      <BestSellersProducts />
     </>
   );
 }
 
 export async function loader() {
   const products = await getProducts();
-  console.log(products)
   return products;
 }

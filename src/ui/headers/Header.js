@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import CartIcon from "../icons/CartIcon";
 import PersonIcon from "../icons/PersonIcon";
 import WorldIcon from "../icons/WorldIcon";
@@ -6,7 +7,7 @@ import NavbarLinks from "../Navbar/NavbarLinks";
 
 // const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
-function Header() {
+function Header({ bgColor }) {
   const cartItemsCount = useSelector(
     (state) => state.products.cartItems,
   )?.length;
@@ -30,8 +31,8 @@ function Header() {
   //   }, []);
 
   return (
-    <section>
-      <div className="flex w-full justify-between p-2 ">
+    <section className={`${bgColor} `}>
+      <div className="flex w-full  justify-between p-2">
         <div className="flex items-center gap-2">
           <WorldIcon height={"20px"} width={"20px"} />
           CA | en_CA
@@ -40,12 +41,12 @@ function Header() {
         <span className="flex items-center gap-2">
           <PersonIcon height={"20px"} width={"20px"} />
           <div>Login </div> |<div to="register">Register </div>
-          <div className="relative cursor-pointer">
+          <Link to="/cart" className="relative cursor-pointer">
             <CartIcon height={"20px"} />
             <span className="absolute -bottom-2 -right-2 rounded-full border border-black bg-biege px-1 text-xs text-black group-hover:bg-black group-hover:text-white">
               {cartItemsCount}
             </span>
-          </div>
+          </Link>
         </span>
       </div>
       <div className="flex w-full  justify-center ">

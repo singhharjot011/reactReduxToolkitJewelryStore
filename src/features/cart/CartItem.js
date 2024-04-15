@@ -6,12 +6,12 @@ function CartItem({ item }) {
   const dispatch = useDispatch();
 
   return (
-    <div className=" flex items-center bg-white ">
+    <div className=" flex items-center bg-white p-4">
       <div className="p-5">
         <img
           src={item.img}
           alt={item.productName}
-          className="h-80 w-80 object-cover object-center"
+          className="h-64 w-64 object-cover object-center"
         ></img>
       </div>
       <div className="flex flex-col space-y-5">

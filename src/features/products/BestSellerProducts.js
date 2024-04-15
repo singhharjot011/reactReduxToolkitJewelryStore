@@ -17,7 +17,7 @@ export default function BestSellersProducts() {
       />
       <section
         id="products"
-        className="relative flex flex-wrap justify-evenly p-5 "
+        className="mt-24 box-content flex flex-wrap justify-evenly bg-babyPink pb-20"
       >
         <div className="my-5 w-full text-center text-4xl ">
           Best Sellers of this Week

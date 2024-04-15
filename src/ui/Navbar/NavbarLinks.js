@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import HeartIconFilled from "../icons/HeartIconFilled";
 import SearchIcon from "../icons/SearchIcon";
 
@@ -9,31 +10,31 @@ function NavbarLinks() {
 
   return (
     <>
-      <a id="nav-menu-items" className="">
+      <Link to="/" id="nav-menu-items" className="">
         Home
-      </a>
+      </Link>
 
-      <a id="nav-menu-items" className="">
+      <Link to="/our-story" id="nav-menu-items" className="">
         Our Story
-      </a>
-      <a id="nav-menu-items" className="">
+      </Link>
+      <Link to="/reviews" id="nav-menu-items" className="">
         Reviews
-      </a>
-      <a id="nav-menu-items" className="">
+      </Link>
+      <Link to="/contact" id="nav-menu-items" className="">
         Contact Us
-      </a>
-      <a id="nav-menu-items" className="">
+      </Link>
+      <Link to="/myaccount" id="nav-menu-items" className="">
         My Account
-      </a>
+      </Link>
       <div className="cursor-pointer">
         <SearchIcon height="20px" />
       </div>
-      <div className="relative cursor-pointer">
+      <Link to="/wishlist" className="relative cursor-pointer">
         <HeartIconFilled height={"20px"} width={"20px"} color={"white"} />
         <span className="absolute -bottom-2 -right-3 rounded-full border border-black bg-biege px-1 text-xs text-black group-hover:bg-black group-hover:text-white">
           {likedItemsCount}
         </span>
-      </div>
+      </Link>
     </>
   );
 }

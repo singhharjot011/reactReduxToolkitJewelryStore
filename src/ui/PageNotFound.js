@@ -2,32 +2,32 @@ import { Link } from "react-router-dom";
 
 function PageNotFound() {
   return (
-    <div class="bg-biege w-full h-full p-16 md:px-0  flex items-center justify-center">
-      <div class="bg-white border border-gray-200 flex flex-col items-center justify-center px-4 md:px-8 lg:px-24 py-8 rounded-lg shadow-2xl">
-        <p class="text-6xl md:text-7xl lg:text-9xl font-bold tracking-wider text-gray-300">
+    <div className="flex h-full w-full items-center justify-center  bg-biege p-16 md:px-0">
+      <div className="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-8 shadow-2xl md:px-8 lg:px-24">
+        <p className="text-6xl font-bold tracking-wider text-gray-300 md:text-7xl lg:text-9xl">
           404
         </p>
-        <p class="text-2xl md:text-3xl lg:text-5xl font-bold tracking-wider text-gray-500 mt-4">
+        <p className="mt-4 text-2xl font-bold tracking-wider text-gray-500 md:text-3xl lg:text-5xl">
           Page Not Found
         </p>
-        <p class="text-gray-500 mt-4 pb-4 border-b-2 text-center">
+        <p className="mt-4 border-b-2 pb-4 text-center text-gray-500">
           Sorry, the page you are looking for could not be found.
         </p>
         <Link
           to="/"
-          class="flex items-center space-x-2 bg-babyPink hover:bg-yellow-500 text-gray-800 px-4 py-2 mt-6 rounded transition duration-150"
+          className="mt-6 flex items-center space-x-2 rounded bg-babyPink px-4 py-2 text-gray-800 transition duration-150 hover:bg-yellow-500"
           title="Return Home"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
+            className="h-5 w-5"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
           </svg>
           <span>Return Home</span>

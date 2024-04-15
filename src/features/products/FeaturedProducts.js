@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useFetcher } from "react-router-dom";
 import Tagline from "../../ui/Tagline";
 import ProductsCard from "./ProductsCard";
 
