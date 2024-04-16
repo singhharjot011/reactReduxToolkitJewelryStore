@@ -14,6 +14,7 @@ import ProductView, {
 } from "./features/products/ProductView";
 import Wishlist from "./features/wishlist/Wishlist";
 import Cart from "./features/cart/Cart";
+import OurStory from "./ui/pages/OurStory";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
         element: <ProductView />,
         errorElement: <PageNotFound />,
         loader: productDetailsLoader,
+      },
+      {
+        path: "/our-story",
+        element: <OurStory />,
+        errorElement: <PageNotFound />,
       },
     ],
   },

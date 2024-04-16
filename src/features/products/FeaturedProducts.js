@@ -21,7 +21,9 @@ export default function FeaturedProducts() {
         id="products"
         className="relative flex flex-wrap justify-evenly p-5 "
       >
-        <div className="my-5 w-full text-center text-4xl ">Featured Items</div>
+        <div className="my-5 w-full text-center text-xl md:text-4xl">
+          Featured Items
+        </div>
         {featuredProducts.map((item) => (
           <ProductsCard item={item} key={item.productCode} />
         ))}

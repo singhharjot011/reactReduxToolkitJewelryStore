@@ -12,8 +12,8 @@ export default function ProductsCard({ item }) {
   const navigate = useNavigate();
 
   return (
-    <div className="mt-10">
-      <div className="flex h-[350px] w-60  flex-col rounded-xl  bg-white p-2">
+    <div className="mt-10 w-1/2 p-2 md:w-1/4 lg:w-1/5">
+      <div className=" h flex h-[350px]  flex-col rounded-xl  bg-white p-2">
         <div className="group relative flex h-4/5 w-full flex-col items-center justify-center ">
           <StatusTag statusTag={item.statusTag} />
           <span
@@ -36,7 +36,7 @@ export default function ProductsCard({ item }) {
             className="h-full w-full rounded-xl  object-cover"
           ></img>
           <div
-            className="absolute bottom-10 w-3/4  cursor-pointer bg-black p-2  text-center text-white opacity-0 duration-500 group-hover:opacity-100"
+            className="absolute bottom-10 w-3/4  cursor-pointer bg-black p-2  text-center text-xs text-white opacity-0 duration-500 group-hover:opacity-100 md:text-base"
             onClick={(e) => {
               e.preventDefault();
               navigate(`/product/${item.productCode}`);
@@ -45,9 +45,9 @@ export default function ProductsCard({ item }) {
             View Product
           </div>
         </div>
-        <div className="flex h-1/5 flex-col  self-center p-2 text-center">
+        <div className="flex h-1/5 flex-col self-center py-1 text-center text-xs md:py-2 md:text-base lg:text-lg">
           <strong>{item.productName}</strong>
-          <span className="text-sm">
+          <span className="">
             <del>{item.statusTag === "Sale" && item.prevPrice}</del>
             {item.newPrice}
           </span>

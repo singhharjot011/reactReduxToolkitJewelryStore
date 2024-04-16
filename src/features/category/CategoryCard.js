@@ -34,7 +34,7 @@ function CategoryCard({ category }) {
         <div className="flex h-full flex-col p-2 ">
           <div className="relative flex h-full w-full justify-center">
             {selectedCategory === category && (
-              <span className="absolute top-52 text-3xl font-bold">
+              <span className="absolute top-52 hidden text-sm font-bold md:text-lg lg:block lg:text-3xl">
                 {category}
               </span>
             )}
@@ -49,7 +49,10 @@ function CategoryCard({ category }) {
               }
             ></img>
           </div>
-          <div className="flex flex-col items-center justify-center p-2 text-xl">
+          <div
+            className="flex flex-col items-center justify-center p-2  text-sm
+md:text-lg lg:text-3xl"
+          >
             <span>{category}</span>
           </div>
         </div>

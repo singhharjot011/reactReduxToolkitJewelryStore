@@ -19,7 +19,7 @@ export default function BestSellersProducts() {
         id="products"
         className="mt-24 box-content flex flex-wrap justify-evenly bg-babyPink pb-20"
       >
-        <div className="my-5 w-full text-center text-4xl ">
+        <div className="my-5 w-full text-center text-xl md:text-4xl">
           Best Sellers of this Week
         </div>
         {bestSellersProducts.map((item) => (

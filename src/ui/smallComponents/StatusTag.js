@@ -1,5 +1,5 @@
 function StatusTag({ statusTag }) {
-  const base = "absolute right-0 top-0 p-1 text-sm";
+  const base = "absolute right-0 top-0 p-1 text-xs md:text-sm";
 
   const styles = {
     hot: base + " bg-yellow-400",
