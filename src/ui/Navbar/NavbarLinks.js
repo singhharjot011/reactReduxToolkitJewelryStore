@@ -10,20 +10,28 @@ function NavbarLinks() {
 
   return (
     <>
-      <Link to="/" id="nav-menu-items" className="">
+      <Link to="/" id="nav-menu-items" className="text-xs md:text-base">
         Home
       </Link>
 
-      <Link to="/our-story" id="nav-menu-items" className="">
+      <Link
+        to="/our-story"
+        id="nav-menu-items"
+        className="text-xs md:text-base"
+      >
         Our Story
       </Link>
-      <Link to="/reviews" id="nav-menu-items" className="">
+      <Link to="/reviews" id="nav-menu-items" className="text-xs md:text-base">
         Reviews
       </Link>
-      <Link to="/contact" id="nav-menu-items" className="">
+      <Link to="/contact" id="nav-menu-items" className="text-xs md:text-base">
         Contact Us
       </Link>
-      <Link to="/myaccount" id="nav-menu-items" className="">
+      <Link
+        to="/myaccount"
+        id="nav-menu-items"
+        className="text-xs md:text-base"
+      >
         My Account
       </Link>
       <div className="cursor-pointer">

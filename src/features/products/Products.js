@@ -19,7 +19,7 @@ export default function Products() {
       <Category />
       <section
         id="products"
-        className="relative flex flex-wrap justify-evenly space-x-1 p-5 "
+        className="relative flex flex-wrap justify-evenly  p-5 "
       >
         <div className="my-5 w-full text-center text-xl md:text-4xl">
           {selectedCategory ? selectedCategory : "All Products"}

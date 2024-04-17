@@ -6,19 +6,23 @@ function CartItem({ item }) {
   const dispatch = useDispatch();
 
   return (
-    <div className=" flex items-center bg-white p-4">
-      <div className="p-5">
+    <div className=" flex items-center bg-white p-2 md:p-4">
+      <div className="p-2 md:p-5">
         <img
           src={item.img}
           alt={item.productName}
-          className="h-64 w-64 object-cover object-center"
+          className="h-32 w-32 object-cover object-center md:h-64 md:w-64"
         ></img>
       </div>
       <div className="flex flex-col space-y-5">
         <div className="flex flex-col">
-          <h4 className="text-2xl font-semibold">{item.productName}</h4>
-          <span>Product Code: {item.productCode}</span>
-          <span>Price: {item.newPrice}</span>
+          <h4 className="text-sm font-semibold md:text-2xl">
+            {item.productName}
+          </h4>
+          <span className="text-xs md:text-base">
+            Product Code: {item.productCode}
+          </span>
+          <span className="text-xs md:text-base">Price: {item.newPrice}</span>
         </div>
         <div className="flex space-x-5">
           <button

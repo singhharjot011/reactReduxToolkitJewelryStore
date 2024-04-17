@@ -33,12 +33,14 @@ function Header({ bgColor }) {
   return (
     <section className={`${bgColor} `}>
       <div className="flex w-full  justify-between p-2">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 text-xs md:text-base">
           <WorldIcon height={"20px"} width={"20px"} />
           CA | en_CA
         </div>
-        <span>Free Standard Shipping over $100</span>
-        <span className="flex items-center gap-2">
+        <span className="text-xs md:text-base">
+          Free Standard Shipping over $100
+        </span>
+        <span className="flex items-center gap-2 text-xs md:text-base">
           <PersonIcon height={"20px"} width={"20px"} />
           <div>Login </div> |<div to="register">Register </div>
           <Link to="/cart" className="relative cursor-pointer">
@@ -51,7 +53,7 @@ function Header({ bgColor }) {
       </div>
       <div className="flex w-full  justify-center ">
         <div to="/">
-          <h1 className="text-6xl" id="brand-name">
+          <h1 className="text-2xl md:text-4xl lg:text-6xl" id="brand-name">
             React Jewels
           </h1>
         </div>

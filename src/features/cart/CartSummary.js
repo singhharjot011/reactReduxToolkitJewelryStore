@@ -9,24 +9,24 @@ function CartSummary({ filteredCartItems }) {
 
   return (
     <div className="flex  flex-col space-y-3  bg-white p-4">
-      <h3 className="text-xl font-bold">Order Summary</h3>
-      <div className="flex justify-between">
+      <h3 className="text-base font-bold md:text-xl">Order Summary</h3>
+      <div className="flex justify-between text-sm md:text-base">
         <span>Sub Total</span>
         <span>${subtotal}</span>
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between text-sm md:text-base">
         <span>Tax</span>
         <span>{tax}%</span>
       </div>
       <hr />
-      <div className="flex justify-between">
+      <div className="flex justify-between text-sm md:text-base">
         <span>Total</span>
         <span>${subtotal + (subtotal * tax) / 100}</span>
       </div>
       <div className="flex w-full justify-center">
         <Link
           to="/checkout"
-          className="w-full bg-black px-4 py-2 text-center text-xl text-biege transition-colors duration-500 hover:bg-stone-50 hover:text-black"
+          className="w-full bg-black px-4 py-2 text-center text-sm text-biege transition-colors duration-500 hover:bg-stone-50 hover:text-black md:text-base"
         >
           <span>Checkout</span>
         </Link>

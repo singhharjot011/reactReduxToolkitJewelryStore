@@ -17,12 +17,12 @@ function Footer() {
               </span>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
+          <div className="grid grid-cols-3 gap-8 sm:grid-cols-3 sm:gap-6">
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
+              <h2 className="mb-6 text-xs font-semibold uppercase text-gray-900 md:text-sm dark:text-white">
                 Customer Service &amp; FAQ
               </h2>
-              <ul className="font-medium text-gray-500 dark:text-gray-400">
+              <ul className="text-xs font-medium text-gray-500 dark:text-gray-400">
                 <li className="mb-4">
                   <div
                     to="/"
@@ -40,10 +40,10 @@ function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
+              <h2 className="mb-6 text-xs font-semibold uppercase text-gray-900 md:text-sm dark:text-white">
                 Follow us
               </h2>
-              <ul className="font-medium text-gray-500 dark:text-gray-400">
+              <ul className="text-xs font-medium text-gray-500 dark:text-gray-400">
                 <li className="mb-4">
                   <div
                     to="https://github.com/singhharjot011"
@@ -65,10 +65,10 @@ function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
+              <h2 className="mb-6 text-xs font-semibold uppercase text-gray-900 md:text-sm dark:text-white">
                 Legal
               </h2>
-              <ul className="font-medium text-gray-500 dark:text-gray-400">
+              <ul className=" text-xs font-medium text-gray-500 dark:text-gray-400">
                 <li className="mb-4">
                   <div to="/" className="hover:underline">
                     Privacy Policy
