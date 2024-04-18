@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
+import CommonNavbar from "../Navbar/CommonNavbar";
+import CollapsibleNavbar from "../Navbar/CollapsibleNavbar";
 
 export default function HeroHeader() {
   return (
@@ -10,6 +12,14 @@ export default function HeroHeader() {
       >
         <div className="flex h-max flex-col justify-center space-y-4 bg-gradient-to-b from-black via-transparent  duration-500 hover:bg-biege hover:from-biege hover:text-black ">
           <Header />
+        </div>
+      </section>
+      <section
+        id="header"
+        className={`header-class text-sm text-biege   duration-500 sm:hidden `}
+      >
+        <div className="flex h-max flex-col justify-center space-y-4 bg-biege text-black ">
+          <CollapsibleNavbar />
         </div>
       </section>
     </>
