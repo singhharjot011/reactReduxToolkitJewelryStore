@@ -15,6 +15,9 @@ import ProductView, {
 import Wishlist from "./features/wishlist/Wishlist";
 import Cart from "./features/cart/Cart";
 import OurStory from "./ui/pages/OurStory";
+import Reviews from "./ui/pages/Reviews";
+import MyAccount from "./ui/pages/MyAccount";
+import ContactUs from "./ui/pages/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +49,21 @@ const router = createBrowserRouter([
       {
         path: "/our-story",
         element: <OurStory />,
+        errorElement: <PageNotFound />,
+      },
+      {
+        path: "/reviews",
+        element: <Reviews />,
+        errorElement: <PageNotFound />,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs />,
+        errorElement: <PageNotFound />,
+      },
+      {
+        path: "/myaccount",
+        element: <MyAccount />,
         errorElement: <PageNotFound />,
       },
     ],

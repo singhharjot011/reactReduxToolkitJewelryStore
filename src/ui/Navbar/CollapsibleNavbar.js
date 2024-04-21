@@ -31,7 +31,7 @@ function CollapsibleNavbar() {
           <span className="sr-only">Open main menu</span>
           <svg
             className="h-5 w-5"
-            ariaHidden="true"
+            aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 17 14"
@@ -85,6 +85,20 @@ function CollapsibleNavbar() {
               className={`block rounded  px-3 py-2 text-black ${curPath === "/myaccount" ? "bg-biege" : ""}`}
             >
               My Account
+            </Link>
+            <Link
+              to="/wishlist"
+              id="nav-menu-items"
+              className={`block rounded  px-3 py-2 text-black ${curPath === "/wishlist" ? "bg-biege" : ""}`}
+            >
+              Wishlist
+            </Link>
+            <Link
+              to="/cart"
+              id="nav-menu-items"
+              className={`block rounded  px-3 py-2 text-black ${curPath === "/cart" ? "bg-biege" : ""}`}
+            >
+              Cart
             </Link>
           </ul>
         </div>

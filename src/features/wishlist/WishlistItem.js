@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import TrashIcon from "../../ui/icons/TrashIcon";
 import { addToCart, likeItem } from "../products/productSlice";
 
@@ -9,23 +10,34 @@ function WishlistItem({ item }) {
 
   return (
     <>
-      <div className=" flex w-full items-center justify-center bg-yellow-500">
-        <div className="w-1/3 p-5">
-          <img
-            src={item.img}
-            alt={item.productName}
-            className="h-60 w-60 object-cover object-center"
-          ></img>
+      <div className=" flex items-center bg-yellow-500 p-2 md:p-4">
+        <div className="p-2  md:p-5">
+          <Link to={`/product/${item.productCode}`}>
+            <img
+              src={item.img}
+              alt={item.productName}
+              className="h-32 w-32 object-cover object-center md:h-64 md:w-64"
+            />
+          </Link>
         </div>
-        <div className="flex w-1/3 flex-col space-y-5">
+        <div className="flex flex-col space-y-5">
           <div className="flex flex-col">
-            <h4 className="text-lg font-semibold">{item.productName}</h4>
-            <span>Product Code:{item.productCode} </span>
-            <span>Price: {item.newPrice} </span>
+            <Link
+              to={`/product/${item.productCode}`}
+              className="text-sm font-semibold md:text-2xl"
+            >
+              {item.productName}
+            </Link>
+            <span className="text-xs md:text-base">
+              Product Code:{item.productCode}{" "}
+            </span>
+            <span className="text-xs md:text-base">
+              Price: {item.newPrice}{" "}
+            </span>
           </div>
           <div className="flex space-x-5">
             <button
-              className=" hover:text-black/70 active:text-white"
+              className="w-max text-2xl hover:text-black/70 active:text-white"
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(likeItem(item.productCode));
@@ -37,7 +49,7 @@ function WishlistItem({ item }) {
           <div className="">
             <button
               id="add-to-cart-btn"
-              className="mt-3 w-2/3 rounded border  border-black bg-black text-biege hover:bg-biege hover:text-black active:bg-white"
+              className="mt-3 w-full rounded border border-black bg-black  px-1 text-biege hover:bg-biege hover:text-black active:bg-white md:w-2/3"
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(addToCart(item.productCode));

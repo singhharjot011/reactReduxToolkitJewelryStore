@@ -33,7 +33,7 @@ export default function ProductView() {
         className="fixed  h-screen w-screen  bg-black/40 backdrop-blur-md"
         key={product.productCode}
       >
-        <div className="fixed left-1/2  top-1/2 z-50 flex h-[calc(100%-4rem)] w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center overflow-auto rounded-xl  border-8 border-white bg-biege py-8 shadow-lg md:w-[calc(80%-2rem)] md:flex-row">
+        <div className="fixed left-1/2  top-1/2 z-50 flex h-[calc(100dvh-4rem)] w-[calc(100dvw-2rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center overflow-auto rounded-xl  border-8 border-white bg-biege py-8 shadow-lg md:w-[calc(80%-2rem)] md:flex-row">
           <button
             className="absolute right-5 top-5 text-xl md:text-4xl"
             onClick={(e) => {
@@ -45,7 +45,7 @@ export default function ProductView() {
           </button>
           <div
             id="product-image-slides"
-            className="flex  h-1/6 gap-1 overflow-y-auto p-5 md:h-auto md:flex-col md:flex-wrap md:gap-5 "
+            className="flex  h-1/6 gap-1 overflow-y-auto p-5 md:h-auto md:flex-col md:flex-wrap md:gap-5"
           >
             {product.imgArr?.map((i) => (
               <img
