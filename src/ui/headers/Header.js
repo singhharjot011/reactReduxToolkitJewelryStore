@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CartIcon from "../icons/CartIcon";
@@ -6,30 +7,33 @@ import WorldIcon from "../icons/WorldIcon";
 import CollapsibleNavbar from "../Navbar/CollapsibleNavbar";
 import NavbarLinks from "../Navbar/NavbarLinks";
 
-// const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
+const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
 function Header({ bgColor }) {
   const cartItemsCount = useSelector(
     (state) => state.products.cartItems,
   )?.length;
 
-  //   const [countryName, setCountryName] = useState("Canada");
+  const [countryCode, setCountryCode] = useState("Canada");
+  const [language, setLanguage] = useState("en");
 
-  //   useEffect(function () {
-  //     async function fetchCountry() {
-  //       try {
-  //         if (!navigator.geolocation) return;
-  //         const res = await fetch(`${BASE_URL}`);
+  useEffect(function () {
+    async function fetchCountry() {
+      try {
+        if (!navigator.geolocation) return;
+        const res = await fetch(`${BASE_URL}`);
 
-  //         const data = await res.json();
-  //         setCountryName(data.countryName);
-  //       } catch (err) {
-  //         console.error(err.message);
-  //       } finally {
-  //       }
-  //     }
-  //     fetchCountry();
-  //   }, []);
+        const data = await res.json();
+
+        setCountryCode(data.countryCode);
+        setLanguage(data.localityLanguageRequested);
+      } catch (err) {
+        console.error(err.message);
+      } finally {
+      }
+    }
+    fetchCountry();
+  }, []);
 
   return (
     <>
@@ -37,7 +41,7 @@ function Header({ bgColor }) {
         <div className="flex w-full  justify-between p-2">
           <div className="flex items-center gap-2 text-xs md:text-base">
             <WorldIcon height={"20px"} width={"20px"} />
-            CA | en_CA
+            {countryCode} | {language}_{countryCode}
           </div>
           <span className="text-xs md:text-base">
             Free Standard Shipping over $100
