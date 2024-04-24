@@ -49,7 +49,7 @@ function WishlistItem({ item }) {
           <div className="">
             <button
               id="add-to-cart-btn"
-              className="mt-3 w-full rounded border border-black bg-black  px-1 text-biege hover:bg-biege hover:text-black active:bg-white md:w-2/3"
+              className="mt-3 w-max rounded border border-black bg-black  px-1 text-biege hover:bg-biege hover:text-black active:bg-white "
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(addToCart(item.productCode));

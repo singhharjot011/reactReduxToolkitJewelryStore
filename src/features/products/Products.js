@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Outlet, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { getProducts } from "../../services/apiStore";
 import BestSellersProducts from "./BestSellerProducts";
 import FeaturedProducts from "./FeaturedProducts";

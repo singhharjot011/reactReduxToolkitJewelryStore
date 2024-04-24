@@ -24,7 +24,7 @@ function MyAccount() {
 
               <div className="flex w-full flex-col items-center space-y-5 text-sm md:text-lg">
                 <div className="flex space-x-2 md:w-2/3">
-                  <label for="email-address" className="w-1/5">
+                  <label htmlFor="email-address" className="w-1/5">
                     Email
                   </label>
                   <input
@@ -38,7 +38,7 @@ function MyAccount() {
                 </div>
 
                 <div className="flex space-x-2 md:w-2/3">
-                  <label for="password" className="w-1/5">
+                  <label htmlFor="password" className="w-1/5">
                     Password
                   </label>
                   <input
