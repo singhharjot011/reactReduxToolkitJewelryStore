@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
 import { getProducts } from "../../services/apiStore";
 
 const products = await getProducts();
@@ -8,6 +7,7 @@ const categories = Array.from(new Set(products.map((item) => item.category)));
 const initialState = {
   products,
   categories,
+  selectedProduct: {},
   selectedCategory: "",
   likedItems: (() => {
     const items = JSON.parse(localStorage.getItem("likedItems"));
@@ -27,6 +27,9 @@ const productSlice = createSlice({
   reducers: {
     selectCategory(state, action) {
       state.selectedCategory = action.payload;
+    },
+    selectProduct(state, action) {
+      state.selectedProduct = action.payload;
     },
     likeItem(state, action) {
       if (state.likedItems.includes(action.payload)) {
@@ -53,6 +56,12 @@ const productSlice = createSlice({
   },
 });
 
-export const { selectCategory, likeItem, unlikeItem, addToCart } =
-  productSlice.actions;
+export const {
+  selectCategory,
+  likeItem,
+  unlikeItem,
+  addToCart,
+  selectProduct,
+  selectedProduct,
+} = productSlice.actions;
 export default productSlice.reducer;

@@ -9,15 +9,16 @@ import PageNotFound from "./ui/PageNotFound";
 import Products, {
   loader as productsLoader,
 } from "./features/products/Products";
-import ProductView, {
-  loader as productDetailsLoader,
-} from "./features/products/ProductView";
+import QuickView from "./features/products/QuickView";
 import Wishlist from "./features/wishlist/Wishlist";
 import Cart from "./features/cart/Cart";
 import OurStory from "./ui/pages/OurStory";
 import Reviews from "./ui/pages/Reviews";
 import MyAccount from "./ui/pages/MyAccount";
 import ContactUs from "./ui/pages/ContactUs";
+import FullView, {
+  loader as productDetailsLoader,
+} from "./features/products/FullView";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/product/:productCode",
-        element: <ProductView />,
+        element: <FullView />,
         errorElement: <PageNotFound />,
         loader: productDetailsLoader,
       },

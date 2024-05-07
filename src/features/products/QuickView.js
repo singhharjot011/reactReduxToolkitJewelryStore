@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useLoaderData, useNavigate } from "react-router";
-import { getProductDetails } from "../../services/apiStore";
+import { useNavigate } from "react-router";
 import ShippingIcon from "../../ui/icons/ShippingIcon";
 import { addToCart } from "./productSlice";
 
-export default function ProductView() {
-  const navigate = useNavigate();
+export default function QuickView({ onCloseModal }) {
   const dispatch = useDispatch();
-  const product = useLoaderData()[0];
-  const [curDispImg, setCurDispImg] = useState(product.img);
+
   function handleImgClick(i) {
     setCurDispImg(i);
   }
   const cartItems = useSelector((state) => state.products.cartItems);
+  const product = useSelector((state) => state.products.selectedProduct);
+
+  const [curDispImg, setCurDispImg] = useState(product.img);
 
   function getColorClass(c) {
     if (c === "gold") return "bg-[#FFD700]";
@@ -30,22 +30,13 @@ export default function ProductView() {
     <>
       <section
         id="product-view"
-        className="fixed  h-screen w-screen  bg-black/40 backdrop-blur-md"
+        className="h-full w-full"
         key={product.productCode}
       >
-        <div className="fixed left-1/2  top-1/2 z-50 flex h-[calc(100dvh-4rem)] w-[calc(100dvw-2rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center overflow-auto rounded-xl  border-8 border-white bg-biege py-8 shadow-lg md:w-[calc(80%-2rem)] md:flex-row">
-          <button
-            className="absolute right-5 top-5 text-xl md:text-4xl"
-            onClick={(e) => {
-              e.preventDefault();
-              navigate(-1);
-            }}
-          >
-            ✖
-          </button>
+        <div className="flex h-full w-full flex-col items-center md:flex-row">
           <div
             id="product-image-slides"
-            className="flex  h-1/6 gap-1 overflow-y-auto p-5 md:h-auto md:flex-col md:flex-wrap md:gap-5"
+            className="flex   gap-1  p-5  md:flex-col md:flex-wrap md:gap-5"
           >
             {product.imgArr?.map((i) => (
               <img
@@ -61,12 +52,12 @@ export default function ProductView() {
           </div>
           <div
             id="product-image"
-            className="mt-5 flex h-1/3 flex-wrap items-center justify-center overflow-hidden object-cover md:mt-0 md:h-full md:w-3/4 lg:w-1/2"
+            className=" flex  h-64 flex-grow justify-center md:h-96 "
           >
             <img
               src={curDispImg}
               alt="Product Name"
-              className=" h-72 rounded-xl  sm:h-96 md:h-4/5 "
+              className=" rounded-xl object-contain  "
             ></img>
           </div>
           <div
@@ -111,6 +102,16 @@ export default function ProductView() {
               >
                 Go To Cart
               </Link>
+              <button
+                id="add-to-cart-btn"
+                className="mt-3 w-1/2 rounded border border-black bg-black text-xs  text-biege hover:bg-biege hover:text-black active:bg-white md:w-full md:text-base"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onCloseModal();
+                }}
+              >
+                Close
+              </button>
             </div>
             <div className="mt-5 flex items-center justify-center gap-x-2">
               <ShippingIcon height={"24px"} />
@@ -125,7 +126,7 @@ export default function ProductView() {
   );
 }
 
-export async function loader({ params }) {
-  const product = await getProductDetails(params.productCode);
-  return product;
-}
+/** OLD class
+ *
+ *         fixed left-1/2  top-1/2 z-50 flex h-[calc(100dvh-4rem)] w-[calc(100dvw-2rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center overflow-auto rounded-xl  border-8 border-white bg-biege py-8 shadow-lg md:w-[calc(80%-2rem)] md:flex-row
+ */
